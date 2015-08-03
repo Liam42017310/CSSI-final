@@ -29,6 +29,18 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         self.response.write('Hello world!')
 
+class SearchHandler(webapp2.RequestHandler):
+    def post(self):
+        template = jinja_environment.get_template('templates/8ball.html')
+
+
+#opens and reads the JSON at the itunes URL urlfetch.fetch(itunes.com/?+ user_artist)
+#song_data=urlfetch.fetch(query).open()
+#drill down to song name
+song_data[0]["name"][name]
+
+our_song_db=Like(title=song_data.title, )
+
 
 
 app = webapp2.WSGIApplication([
