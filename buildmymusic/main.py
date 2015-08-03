@@ -30,19 +30,29 @@ class MainHandler(webapp2.RequestHandler):
         self.response.write('Hello world!')
 
 class SearchHandler(webapp2.RequestHandler):
-    def post(self):
-        template = jinja_environment.get_template('templates/8ball.html')
+    def get(self):
+        # template = jinja_environment.get_template('templates/search.html')
+        search_term = 'Kid+Cudi'
+        base_url = 'https://itunes.apple.com/search?media=music&'
+        search_query = 'term=' + search_term
+        search_url = base_url + search_query
+        url_content = urlfetch.fetch(search_url).content
+        parsed_url_dictionary = json.loads(url_content)
+        for index, key in enumerate(parsed_url_dictionary['results']):
+            self.response.write(parsed_url_dictionary['results'][index]['trackName'])
+
+
 
 
 #opens and reads the JSON at the itunes URL urlfetch.fetch(itunes.com/?+ user_artist)
 #song_data=urlfetch.fetch(query).open()
 #drill down to song name
-song_data[0]["name"][name]
-
-our_song_db=Like(title=song_data.title, )
+# song_data[0]["name"][name]
+#
+# our_song_db=Like(title=song_data.title, )
 
 
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', SearchHandler)
 ], debug=True)
