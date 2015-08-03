@@ -4,7 +4,7 @@ import jinja2
 import os
 import json
 from google.appengine.api import urlfetch
-from google.appengine.api import ndb
+from google.appengine.ext import ndb
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
