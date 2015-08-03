@@ -1,0 +1,12 @@
+h1{text-align: center;
+color: red;}
+.centerbox{width: 400px; height: 500px; border: 1px solid black;}
+.leftbox{position: absolute;
+     top: 310px;
+     left: 25px;
+     width: 200px;
+     border: 1px solid black ;}
+#outerbox{float: left;}
+#home{width: 200px; border: 1px solid black;}
+#likes{width: 200px; border: 1px solid black;}
+#events{width: 200px; border: 1px solid black;}

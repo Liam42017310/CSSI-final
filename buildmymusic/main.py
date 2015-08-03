@@ -25,10 +25,8 @@ class User(ndb.Model):
     uname = ndb.StringProperty(required = True)
     likes = ndb.KeyProperty(Like, repeated = True)
 
-class MainHandler(webapp2.RequestHandler):
-    def get(self):
-        self.response.write('Hello world!')
 
+<<<<<<< HEAD
 class SearchHandler(webapp2.RequestHandler):
     def get(self):
         # template = jinja_environment.get_template('templates/search.html')
@@ -43,6 +41,9 @@ class SearchHandler(webapp2.RequestHandler):
             search_name = parsed_url_dictionary['results'][index]['trackName']
             template_vars.update({'key' + str(index) : search_name})
         self.response.write(template_vars)
+=======
+
+>>>>>>> f9b8a2edea27d6346b884b55c139b7fc29f1266b
 
 
 app = webapp2.WSGIApplication([
