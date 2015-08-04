@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 h1{float:left;
   clear:both;
   position:relative;
@@ -177,3 +178,20 @@ width: 230px;
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
 }*/
+=======
+h1{text-align: center;
+color: red;}
+.centerbox{width: 400px; height: 500px; border: 1px solid black;}
+.leftbox{position: absolute;
+     top: 310px;
+     left: 25px;
+     width: 200px;
+     border: 1px solid black ;}
+#outerbox{float: left;}
+#home{width: 200px; border: 1px solid black;}
+#likes{width: 200px; border: 1px solid black;}
+#events{width: 200px; border: 1px solid black;}
+#error{color: red;
+       font-size: 20px;
+       text-align: center;}
+>>>>>>> 65223f6e7c6f2fbb550284fe59f02a50d78ff32a
