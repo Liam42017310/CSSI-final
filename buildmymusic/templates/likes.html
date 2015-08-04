@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <header>
+    <title>
+      likes
+    </title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/default.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="my_script.js"></script>
+  </header>
+  <body>
+    <h1>
+      A++
+    </h1>
+    <br>
+    <form action = "/search" method = "post">
+      <div id = "searching">
+      <center><input type = "text" name = "search" style = "width: 300px; height: 30px"/>
+      <input type="submit" value="search"></center>
+      </div>
+    </form>
+    <br>
+    <br>
+    <center><div class = "centerbox">
+      search page
+    </center></div>
+
+    <form action = "/profile" method = "get">
+      <input type = "click"><figure id ="profile"><center><br>My Profile</center></figure>
+    </form>
+    <form action = "/likes" method = "post">
+      <input type = "click"><figure id ="likes"><center><br>Likes</center></figure>
+    </form>
+    <form action = "/events" method = "post">
+      <input type = "click"><figure id ="events"><center><br>Events</center></figure>
+    </form>
+    <form action = "/aboutus" method = "get">
+      <input type = "click"><figure id ="aboutus"><center><br>About Us</center></figure>
+    </form>
+
+    <div class = "recentlikes">
+      <center>Recently added likes:</center>
+    </div>
+    <div class = "recentevents">
+      <center>Recently added events:</center>
+    </div>
+
+  </body>
+</html>
