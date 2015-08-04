@@ -31,6 +31,10 @@ class MainHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('templates/default.html')
         self.response.out.write(template.render())
 
+class ProfileHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/profile.html')
+        self.response.out.write(template.render())
 
 
 class SearchHandler(webapp2.RequestHandler):
@@ -67,5 +71,6 @@ class SearchHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ('/search', SearchHandler)
+    ('/search', SearchHandler),
+    ('/profile', ProfileHandler)
 ], debug=True)
