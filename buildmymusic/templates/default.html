@@ -2,11 +2,11 @@
 <html>
   <header>
     <title>
-      default
+      Buildmymusic
     </title>
     <link rel="stylesheet" type="text/css" href="stylesheets/default.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="my_script.js"></script>
+    <script src="default.js"></script>
   </header>
   <body>
     <h1>
@@ -22,21 +22,25 @@
     <br>
     <br>
     <center><div class = "centerbox">
-      search page
+      {% for i in searches %}
+      {{i.title}} , {{i.artist}} , {{i.album}}
+      <br>
+      <br>
+      {% endfor %}
     </center></div>
 
     <div class = "buttons">
       <form action = "/profile" method = "get">
-        <input type = "button" id = "profile" value = "Profile">
+        <input type = "submit" id = "profile" value = "Profile">
       </form>
       <form action = "/likes" method = "post">
-        <input type = "button" id = "likes" value = "Likes">
+        <input type = "submit" id = "likes" value = "Likes">
       </form>
       <form action = "/events" method = "post">
-        <input type = "button" id = "events" value = "Events">
+        <input type = "submit" id = "events" value = "Events">
       </form>
       <form action = "/aboutus" method = "get">
-        <input type = "button" id = "aboutus" value = "About Us">
+        <input type = "submit" id = "aboutus" value = "About Us">
       </form>
     </div>
 
@@ -46,11 +50,7 @@
     <div class = "recentevents">
       <center>Recently added events:</center>
     </div>
-    {% for i in searches %}
-    {{i.title}} , {{i.artist}} , {{i.album}}
-    <br>
-    <br>
-    {% endfor %}
+
 
   </body>
 </html>

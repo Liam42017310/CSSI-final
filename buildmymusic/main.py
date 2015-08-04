@@ -42,7 +42,7 @@ class WelcomeHandler(webapp2.RequestHandler):
         else:
             self.redirect(users.create_login_url(self.request.uri))
 
-            
+
 
 class SearchHandler(webapp2.RequestHandler):
     def post(self):
@@ -87,9 +87,15 @@ class SearchHandler(webapp2.RequestHandler):
                            'searches': search_results}
             self.response.out.write(template.render(passed_vars))
 
+class ProfileHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/profile.html')
+        self.response.write(template.render())
+
 
 
 app = webapp2.WSGIApplication([
     ('/', WelcomeHandler),
-    ('/search', SearchHandler)
+    ('/search', SearchHandler),
+    ('/profile', ProfileHandler)
 ], debug=True)
