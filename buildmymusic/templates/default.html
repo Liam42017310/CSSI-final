@@ -5,8 +5,6 @@
       default
     </title>
     <link rel="stylesheet" type="text/css" href="stylesheets/default.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="my_script.js"></script>
   </header>
   <body>
     <h1>
@@ -22,7 +20,11 @@
     <br>
     <br>
     <center><div class = "centerbox">
-      search page
+      {% for i in searches %}
+      {{i.title}} , {{i.artist}} , {{i.album}}
+      <br>
+      <br>
+      {% endfor %}
     </center></div>
 
     <div class = "buttons">
@@ -46,11 +48,9 @@
     <div class = "recentevents">
       <center>Recently added events:</center>
     </div>
-    {% for i in searches %}
-    {{i.title}} , {{i.artist}} , {{i.album}}
-    <br>
-    <br>
-    {% endfor %}
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+    </script>
+    <script src="scripts/script1.js">
+    </script>
   </body>
 </html>

@@ -2,15 +2,17 @@ h1{float:left;
   clear:both;
   position:relative;
    color: red;
- left: 500px;}
+ left: 650px;}
 body{margin-left: 50px;
-margin-right:100px;}
+margin-right:100px;
+position:relative;
+left:}
 
 #searching{
           float:left;
           clear:both;
           position:relative;
-          left:400px;}
+          left:500px;}
 
 .centerbox{
           /*position: fixed;*/
@@ -22,83 +24,40 @@ margin-right:100px;}
           float: left;
           margin-left: 50px;
           clear: both;
-          left: 250px;
+          left: 340px;
           top: 20px;
           margin-right: 50px;
           position: relative;
           }
 
+.recentevents {
+  /* position: fixed; */
+  width: 275px;
+  height: 300px;
+  border: 3px solid black;
 
-/*#profile {
-  position: fixed;
-  background: white;
-  border: 3px solid black;
-  height: 60px;
-  width: 230px;
-  left:90px;
-  top:275px;
-}*/
-/*#likes {
-  position: fixed;
-  background: white;
-  border: 3px solid black;
-  height: 60px;
-  width: 230px;
-  left:90px;
-  top:375px;
-}
-#events {
-  position: fixed;
-  background: white;
-  border: 3px solid black;;
-  height: 60px;
-  width: 230px;
-  left:90px;
-  top:475px;
+  float: left;
+  clear: both;
+  position: relative;
+  left: 1000px;
+  top: -1250px;
 }
 
-#aboutus {
-  position: fixed;
-  background: white;
+.recentlikes {
+  /* position: fixed; */
+  width: 275px;
+  height: 300px;
   border: 3px solid black;
-  height: 60px;
-  width: 230px;
-  left:90px;
-  top:575px;
-}*/
-/*body{
-      min-width: 1300px;
-      min-height: 700px;
-}*/
-.recentlikes{
-           /*position: fixed;*/
-           width: 250px;
-           height: 275px;
-           border: 3px solid black;
-           left: 1100px;
-           top: 150px;
-           float: left;
-            clear: left;
-            position: relative;
-            top: -650px;
-            left: 920px;
-            margin-right: 25px;
-            margin-top: 25px;
-            margin-bottom: 25px;
-            }
-.recentevents{
-          /*position: fixed;*/
-           width: 250px;
-           height: 275px;
-           border: 3px solid black;
-           left: 1100px;
-           top: 475px;
-           float: left;
-           clear: both;
-           position: relative;
-           left: 920px;
-           top: -1250px;
-          }
+
+  float: left;
+  clear: left;
+  position: relative;
+  top: -550px;
+  left: 1000px;
+  margin-right: 25px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
   #profile {
   /*position: fixed;*/
   font-family: Georgia;
@@ -159,21 +118,12 @@ height: 60px;
 width: 230px;
 }
 
-.buttons{
-          margin-right: 25px;
-          margin-bottom: 50px;
-          margin-top: 50px;
-          position: relative;
-          bottom: 500px;
-          clear: both;
-        }
-
-/*.btn:hover {
-  background: #3cb0fd;
-  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
-  text-decoration: none;
-}*/
+.buttons {
+  margin-right: 25px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  position: relative;
+  top: -400px;
+  clear: both;
+  left: 95px;
+}
