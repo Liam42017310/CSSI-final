@@ -1,2 +1,46 @@
-h1{text-align: center}
-h3{text-align: center}
+body {
+  background-image: url('http://searchengineland.com/figz/wp-content/seloads/2013/03/logo_512-300x300.png');
+  background-size: auto;
+  background-color: gray;
+}
+
+
+h1 {
+  text-align: left;
+  clear: left;
+  padding-left: 10px;
+  padding-top: 10px;
+  color: white;
+  font-size: 72px;
+}
+
+#header {
+  float: left;
+  clear: left;
+}
+
+
+.myButton {
+  float: right;
+	background-color:#db6d23;
+	-moz-border-radius:30px;
+	-webkit-border-radius:30px;
+	border-radius:30px;
+	border:6px solid #919191;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Trebuchet MS;
+	font-size:50px;
+	font-weight:bold;
+	padding:31px 76px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #000000;
+}
+.myButton:hover {
+	background-color:gray;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}

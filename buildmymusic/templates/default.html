@@ -2,47 +2,62 @@
 <html>
   <header>
     <title>
-      box practice
+      Buildmymusic
     </title>
     <link rel="stylesheet" type="text/css" href="stylesheets/default.css">
+<<<<<<< HEAD
   </header>
   <body>
     <h1>
       A+
+=======
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="default.js"></script>
+  </header>
+  <body>
+    <h1>
+      <center>A++</center>
+>>>>>>> 232a27bc8675ced06ec084ef6ff7b100b9fe0a86
     </h1>
     <br>
     <form action = "/search" method = "post">
-    <center><input type = "text" name = "search" style = "width: 300px; height: 30px"/>
-    <input type="submit" value="search"></center>
+      <div id = "searching">
+      <center><input type = "text" name = "search" style = "width: 300px; height: 30px"/>
+      <input type="submit" value="search"></center>
+      </div>
     </form>
     <br>
     <br>
     <center><div class = "centerbox">
-      search page
+      {% for i in searches %}
+      {{i.title}} , {{i.artist}} , {{i.album}}
+      <br>
+      <br>
+      {% endfor %}
     </center></div>
-    <div class = "leftbox">
-      <div id = "homebox">
-        <center><h4>Home</h4></center>
-      </div>
-      <div id = "likes">
-        <center><h4>Likes</h4></center>
-      </div>
-      <div id = "events">
-        <center><h4>Events</h4></center>
-      </div>
+
+    <div class = "buttons">
+      <form action = "/profile" method = "get">
+        <input type = "submit" id = "profile" value = "Profile">
+      </form>
+      <form action = "/likes" method = "post">
+        <input type = "submit" id = "likes" value = "Likes">
+      </form>
+      <form action = "/events" method = "post">
+        <input type = "submit" id = "events" value = "Events">
+      </form>
+      <form action = "/aboutus" method = "get">
+        <input type = "submit" id = "aboutus" value = "About Us">
+      </form>
     </div>
-    <div class = "rightbox">
-      <div id = "suggestions">
-        <center><h3>Suggestions</h3></center>
-      </div>
-      <div id = "??">
-        <center><h3>??</h3></center>
-      </div>
+
+    <div class = "recentlikes">
+      <center>Recently added likes:</center>
     </div>
-    {{songs}}
-    <br>
-    {{artists}}
-    <br>
-    {{albums}}
+    <div class = "recentevents">
+      <center>Recently added events:</center>
+    </div>
+
+
   </body>
 </html>
