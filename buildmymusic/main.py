@@ -33,10 +33,16 @@ class WelcomeHandler(webapp2.RequestHandler):
     def post(self):
         user = users.get_current_user()
         if user:
+            current_user = User(user = user.user_id(), uname = user.nickname())
+            existing_user = User.query().filter(User.user == current_user.user).fetch()
+            if not existing_user:
+                current_user.put()
             template = jinja_environment.get_template('templates/default.html')
             self.response.out.write(template.render())
         else:
             self.redirect(users.create_login_url(self.request.uri))
+
+            
 
 class SearchHandler(webapp2.RequestHandler):
     def post(self):
