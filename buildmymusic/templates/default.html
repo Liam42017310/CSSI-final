@@ -41,10 +41,11 @@
         <center><h3>??</h3></center>
       </div>
     </div>
-    {{songs}}
+    {% for i in searches %}
+    {{i.title}} , {{i.artist}} , {{i.album}}
     <br>
-    {{artists}}
     <br>
-    {{albums}}
+    {% endfor %}
+
   </body>
 </html>

@@ -10,3 +10,6 @@ color: red;}
 #home{width: 200px; border: 1px solid black;}
 #likes{width: 200px; border: 1px solid black;}
 #events{width: 200px; border: 1px solid black;}
+#error{color: red;
+       font-size: 20px;
+       text-align: center;}
