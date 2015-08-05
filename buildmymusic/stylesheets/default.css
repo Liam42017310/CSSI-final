@@ -5,14 +5,15 @@ body{
       margin-left: 50px;
       margin-right:100px;
       position:relative;
-      background: #FFA62F;
+      background-size: cover;
+      background-image: url("http://www.freewallpaperfullhd.com/wp-content/uploads/2015/03/wallpapers/ocean_background_3-wallpaper-1920x1200.jpg");
       left: -50px;
     }
 h1{
       float:left;
       clear:both;
       position:relative;
-      color: red;
+      color: #AFEEEE;
       left: 650px;
 }
 
@@ -20,21 +21,36 @@ h1{
             float:left;
             clear:both;
             position:relative;
-            left:470px;
+            left:600px;
           }
 #search{
           position:relative;
           top:10px;
         }
 
+#searchbar{
+            opacity:0.6;
+            filter:alpha(opacity=60);
+            color: white;
+            color: black;
+          }
+
+#musicnote{
+            float:left;
+            position: relative;
+            top: -775px;
+            left: -15px;
+            height: 420px;
+            width: 420px;
+          }
+
 .centerbox {
   /* position: fixed; */
               padding-top: 10px;
               padding-right: 20px;
               padding-left: 20px;
-              width: 600px;
+              width: 1000px;
               height: 625px;
-              border: 2px solid #FF3300;
               float: left;
               margin-left: 50px;
               clear: both;
@@ -43,11 +59,13 @@ h1{
               margin-right: 50px;
               position: relative;
               overflow: scroll;
-              background-color: #F87217;
+              background-color: white;
+              opacity:0.6;
+              filter:alpha(opacity=60);
             }
 
 #results{
-          color:white;
+          color:black;
           font-family: "PT Sans";
         }
 
@@ -56,33 +74,36 @@ h1{
             margin-bottom: 50px;
             margin-top: 50px;
             position: relative;
-            top: -500px;
+            top: -720px;
             clear: both;
             left: 95px;
+            width: 200px;
           }
 
 #profile {
 /*position: fixed;*/
             font-family: "Yanone Kaffeesatz";
-            color: #ffffff;
+            color: black;
             font-size: 20px;
             border-radius: px;
-            background: #FF3300;
+            background: white;
             padding: 10px 20px 10px 20px;
             text-decoration: none;
             left:90px;
             top:275px;
             height: 60px;
             width: 230px;
+            opacity:0.6;
+            filter:alpha(opacity=60);
          }
 
 #likes {
 /*position: fixed;*/
           font-family: "Yanone Kaffeesatz";
-          color: #ffffff;
+          color: black;
           font-size: 20px;
           border-radius: px;
-          background: #FF3300;
+          background: white;
           padding: 10px 20px 10px 20px;
           text-decoration: none;
           left:90px;
@@ -90,15 +111,17 @@ h1{
           height: 60px;
           width: 230px;
           overflow: scroll;
+          opacity:0.6;
+          filter:alpha(opacity=60);
         }
 
 #events {
 /*position: fixed;*/
             font-family: "Yanone Kaffeesatz";
-            color: #ffffff;
+            color: black;
             font-size: 20px;
             border-radius: px;
-            background: #FF3300;
+            background: white;
             padding: 10px 20px 10px 20px;
             text-decoration: none;
             left:90px;
@@ -106,32 +129,36 @@ h1{
             height: 60px;
             width: 230px;
             overflow: scroll;
+            opacity:0.6;
+            filter:alpha(opacity=60);
         }
 
 #aboutus {
 /*position: fixed;*/
             font-family: "Yanone Kaffeesatz";
-            color: #ffffff;
+            color: black;
             font-size: 20px;
             border-radius: px;
-            background: #FF3300;
+            background: white;
             padding: 10px 20px 10px 20px;
             text-decoration: none;
             left:90px;
             top:455px;
             height: 60px;
             width: 230px;
+            opacity:0.6;
+            filter:alpha(opacity=60);
           }
 
 
 #thumbsuplike {
-  border: 1px solid black;
-}
+                border: 1px solid black;
+              }
 
 #logout{
           position: relative;
           left:180px;
-          top: -525px;
+          top: -750px;
           font-family: "Yanone Kaffeesatz";
           color: white;
        }
@@ -139,12 +166,11 @@ h1{
 #gohome{
          position: relative;
          left:80px;
-
        }
 
-.recentevents {
+/*.recentevents {*/
  /* position: fixed; */
-                 width: 300px;
+                 /*width: 300px;
                  height: 340px;
                  border: 2px solid #FF3300;
                  float: left;
@@ -157,11 +183,11 @@ h1{
                  padding-bottom: 10px;
                  padding-right: 10px;
                  background-color: #F87217;
-             }
+             }*/
 
-.recentlikes {
+/*.recentlikes {*/
  /* position: fixed; */
-               width: 300px;
+               /*width: 300px;
                height: 340px;
                border: 2px solid #FF3300;
                float: left;
@@ -177,8 +203,8 @@ h1{
                background-color: #F87217;
                padding-bottom: 10px;
                padding-right: 10px;
-           }
-#addedlikes{
+           }*/
+/*#addedlikes{
               font-family:"Yanone Kaffeesatz";
               color: white;
             }
@@ -186,4 +212,4 @@ h1{
 #addedevents{
               font-family:"Yanone Kaffeesatz";
               color: white;
-            }
+            }*/
