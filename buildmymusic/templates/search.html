@@ -2,15 +2,15 @@
 <html>
   <header>
     <title>
-      default
+      Buildmymusic
     </title>
     <link rel="stylesheet" type="text/css" href="stylesheets/default.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="my_script.js"></script>
+    <script src="default.js"></script>
   </header>
   <body>
     <h1>
-      A++
+      <center>Buildmymusic</center>
     </h1>
     <br>
     <form action = "/search" method = "post">
@@ -20,24 +20,38 @@
       </div>
     </form>
     <br>
-    <center><div class = "centerbox">
+    <div class = "centerbox">
 
+      {% for i in searches %}
+      <p id = "results">
+        Song: {{i.title}} <br> Artist: {{i.artist}} <br> Album: {{i.album}} <br> <input type="image" src="http://www.clker.com/cliparts/l/M/g/8/7/T/black-and-white-thumbs-up-md.png" height = "35" width = "35" name="Like" id="thumbsuplike" />
+      </p>
+      {% endfor %}
 
-
-    </center></div>
-
-    <div class="leftbox">
-      <figure id ="profile"><center><br>My Profile</center></figure>
-      <figure id ="likes"><center><br>Likes</center></figure>
-      <figure id ="events"><center><br>Events</center></figure>
-      <figure id ="aboutus"><center><br>About Us</center></figure>
     </div>
+
+    <div class = "buttons">
+      <form action = "/profile" method = "get">
+        <input type = "submit" id = "profile" value = "Profile">
+      </form>
+      <form action = "/likes" method = "post">
+        <input type = "submit" id = "likes" value = "Likes">
+      </form>
+      <form action = "/events" method = "post">
+        <input type = "submit" id = "events" value = "Events">
+      </form>
+      <form action = "/aboutus" method = "get">
+        <input type = "submit" id = "aboutus" value = "About Us">
+      </form>
+    </div>
+
     <div class = "recentlikes">
       <center>Recently added likes:</center>
     </div>
     <div class = "recentevents">
       <center>Recently added events:</center>
     </div>
+
 
   </body>
 </html>

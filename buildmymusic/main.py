@@ -47,6 +47,10 @@ class ProfileHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('templates/profile.html')
         self.response.out.write(template.render())
 
+class DefaultHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/default.html')
+
 
 class SearchHandler(webapp2.RequestHandler):
     def post(self):
@@ -56,10 +60,10 @@ class SearchHandler(webapp2.RequestHandler):
         search_results = []
         user_search = self.request.get('search')
         if user_search == '':
-            template = jinja_environment.get_template('templates/defaut_error.html')
+            template = jinja_environment.get_template('templates/search_error.html')
             self.response.write(template.render())
         else:
-            template = jinja_environment.get_template('templates/default.html')
+            template = jinja_environment.get_template('templates/search.html')
             term = {'term' : user_search}
             search_term = urllib.urlencode(term)
             base_url = 'https://itunes.apple.com/search?media=music&'
@@ -96,6 +100,7 @@ class SearchHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
 
     ('/', WelcomeHandler),
+    ('/default', DefaultHandler),
     ('/search', SearchHandler),
     ('/profile', ProfileHandler)
 ], debug=True)
