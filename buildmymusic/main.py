@@ -22,6 +22,11 @@ class Like(ndb.Model):
     artist = ndb.StringProperty(required = True)
     album = ndb.StringProperty(required = True)
 
+class Event(ndb.Model):
+    concert_name = ndb.StringProperty(required = True)
+    date = ndb.StringProperty(required = True)
+    location = ndb.StringProperty(required = True)
+
 class User(ndb.Model):
     user = ndb.StringProperty(required = True)
     uname = ndb.StringProperty(required = True)
@@ -51,6 +56,11 @@ class ProfileHandler(webapp2.RequestHandler):
 class DefaultHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/default.html')
+
+class OtherDefaultHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/default.html')
+        self.response.out.write(template.render())
 
 class AboutUsHandler(webapp2.RequestHandler):
     def get(self):
@@ -104,6 +114,7 @@ class SearchHandler(webapp2.RequestHandler):
                            'searches': search_results}
             self.response.out.write(template.render(passed_vars))
 
+
 class LikeHandler(webapp2.RequestHandler):
     def post(self):
         encoded_request = self.request.get('like')
@@ -111,10 +122,55 @@ class LikeHandler(webapp2.RequestHandler):
         current_song_title = decoded_request['title']
         current_artist_title = decoded_request['artist']
         current_album_title = decoded_request['album']
-        
 
 
+class EventsHandler(webapp2.RequestHandler):
+    def post(self):
+        template_concert_names = {}
+        template_dates = {}
+        template_locations = {}
+        search_results = []
+        # user_search = self.request.get('search')
+        user_search = "beyonce"
+        # http://api.bandsintown.com/artists/Skrillex/events.json?api_version=2.0&app_id=YOUR_APP_ID
+        if user_search == '':
+            template = jinja_environment.get_template('templates/events_error.html')
+            self.response.write(template.render())
+        else:
+            template = jinja_environment.get_template('templates/events.html')
+            # term = {'term' : user_search}
+            search_term = user_search
 
+            base_url = 'http://api.bandsintown.com/artists/'
+            search_url = base_url + search_term + "/events.json?api_version=2.0&app_id=buildmymusic"
+            url_content = urlfetch.fetch(search_url).content
+            parsed_url_dictionary = json.loads(url_content)
+            # template_vars = {"dictionary": parsed_url_dictionary}
+
+            for index, key in enumerate(parsed_url_dictionary):
+                search_title = parsed_url_dictionary[index]['title']
+                template_concert_names.update({'key' + str(index) : search_title})
+
+            for index, key in enumerate(parsed_url_dictionary):
+                search_date = parsed_url_dictionary[index]['formatted_datetime']
+                template_dates.update({'key' + str(index) : search_date})
+
+            for index, key in enumerate(parsed_url_dictionary):
+                search_location = parsed_url_dictionary[index]['formatted_location']
+                template_locations.update({'key' + str(index) : search_location})
+
+            for key, value in template_concert_names.iteritems():
+                concert_name = value
+                date = template_dates[key]
+                location = template_locations[key]
+                current_search_result = Event(concert_name = concert_name, date = date, location = location)
+                search_results.append(current_search_result)
+            passed_vars = {'concertnames': template_concert_names,
+                           'dates': template_dates,
+                           'locations': template_locations,
+                           'searches': search_results}
+
+            self.response.out.write(template.render(passed_vars))
 
 
 
@@ -127,6 +183,11 @@ app = webapp2.WSGIApplication([
     ('/search', SearchHandler),
     ('/profile', ProfileHandler),
     ('/aboutus', AboutUsHandler),
+<<<<<<< HEAD
     ('/likes', LikeHandler)
+=======
+    ('/events', EventsHandler),
+    ('/otherdefault', OtherDefaultHandler)
+>>>>>>> 75f32569c6f6836c05c6eb8cde805d5deb055263
 
 ], debug=True)
