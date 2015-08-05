@@ -12,35 +12,20 @@
   </header>
   <body>
     <h1>
-<<<<<<< HEAD
-      <center>A++</center>
-
-=======
-
       <center>Buildmymusic</center>
-
->>>>>>> 1dd53bd4965752f10cfd919c2129809ca6fd5f00
     </h1>
     <br>
     <form action = "/search" method = "post">
       <div id = "searching">
       <center><input type = "text" name = "search" style = "width: 450px; height: 30px"/>
       <!-- <input type="submit" value="search"></center> -->
-<<<<<<< HEAD
-      <input type="image" src="http://www.clker.com/cliparts/Y/x/X/j/U/f/search-button-without-text-md.png" height = "30" width = "30" name="searchbutton" id = "search"></center> 
-=======
       <input type="image" src="http://www.clker.com/cliparts/Y/x/X/j/U/f/search-button-without-text-md.png" height = "30" width = "30" name="searchbutton" id = "search"></center>
->>>>>>> 1dd53bd4965752f10cfd919c2129809ca6fd5f00
       </div>
     </form>
     <br>
     <br>
     <div class = "centerbox">
-      {% for i in searches %}
-      <p id = "results">
-        Song: {{i.title}} Artist: {{i.artist}} Album: {{i.album}} <input type="image" src="http://www.clker.com/cliparts/l/M/g/8/7/T/black-and-white-thumbs-up-md.png" height = "35" width = "35" name="Like" id="thumbsuplike" />
-      </p>
-      {% endfor %}
+        something goes here
     </div>
 
     <div class = "buttons">
@@ -66,10 +51,10 @@
     </div>
 
     <div class = "recentlikes">
-      <center>Recently added likes:</center>
+      <center id = "addedlikes"><h3>Recently added likes:</h3></center>
     </div>
     <div class = "recentevents">
-      <center>Recently added events:</center>
+      <center id = "addedevents"><h3>Recently added events:</h3></center>
     </div>
 
   </body>
