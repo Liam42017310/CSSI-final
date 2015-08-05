@@ -24,16 +24,17 @@
       <input type="image" src="http://www.clker.com/cliparts/Y/x/X/j/U/f/search-button-without-text-md.png" height = "30" width = "30" name="searchbutton" id = "search"></center>
       </div>
     </form>
-    <br>
+
     <br>
     <div class = "centerbox">
+
       {% for i in searches %}
       <p id = "results">
         <strong>Song:</strong> {{i.title}}<br> <strong>Artist:</strong> {{i.artist}} <br><strong>Album:</strong> {{i.album}}<br> <input type="image" src="http://www.clker.com/cliparts/l/M/g/8/7/T/black-and-white-thumbs-up-md.png" height = "35" width = "35" name="Like" id="thumbsuplike" />
       </p>
       {% endfor %}
-    </div>
 
+    </div>
     <div class = "buttons">
       <form action = "/default" method = "get">
         <input type="image" src="http://images.clipartpanda.com/brick-house-clipart-RcdAj5Xc9.png" height = "80" width = "80" name="Like" id="gohome" />
