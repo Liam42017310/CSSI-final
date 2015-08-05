@@ -21,14 +21,13 @@
     </form>
     <br>
     <div class = "centerbox">
-
       {% for i in searches %}
       <p id = "results">
         Song: {{i.title}} <br> Artist: {{i.artist}} <br> Album: {{i.album}} <br> <input type="image" src="http://www.clker.com/cliparts/l/M/g/8/7/T/black-and-white-thumbs-up-md.png" height = "35" width = "35" name="Like" id="thumbsuplike" />
       </p>
       {% endfor %}
-
     </div>
+
 
     <div class = "buttons">
       <form action = "/profile" method = "get">
