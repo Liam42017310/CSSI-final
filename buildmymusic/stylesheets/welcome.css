@@ -1,6 +1,6 @@
 body {
-  background-image: url('http://searchengineland.com/figz/wp-content/seloads/2013/03/logo_512-300x300.png');
-  background-size: auto;
+  background-image: url('http://www.pptbackgrounds.net/uploads/audio-sound-wave-blue-powerpoint-backgrounds.jpg');
+  background-size: cover;
   background-color: gray;
 }
 
@@ -22,14 +22,14 @@ h1 {
 
 .myButton {
   float: right;
-	background-color:#db6d23;
+	background-color:black;
 	-moz-border-radius:30px;
 	-webkit-border-radius:30px;
 	border-radius:30px;
-	border:6px solid #919191;
+	border:6px solid #white;
 	display:inline-block;
 	cursor:pointer;
-	color:#ffffff;
+	color:blue;
 	font-family:Trebuchet MS;
 	font-size:50px;
 	font-weight:bold;
