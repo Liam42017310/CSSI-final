@@ -2,15 +2,15 @@
 <html>
   <header>
     <title>
-      default
+      Buildmymusic
     </title>
     <link rel="stylesheet" type="text/css" href="stylesheets/default.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="my_script.js"></script>
+    <script src="default.js"></script>
   </header>
   <body>
     <h1>
-      A++
+      <center>Buildmymusic</center>
     </h1>
     <br>
     <form action = "/search" method = "post">
@@ -21,23 +21,47 @@
     </form>
     <br>
     <center><div class = "centerbox">
+<<<<<<< HEAD
 
 
 
+=======
+<<<<<<< HEAD
+      {% for i in searches %}
+      {{i.title}} , {{i.artist}} , {{i.album}}
+      <br>
+      <br>
+      {% endfor %}
+=======
+
+
+
+>>>>>>> 75943c125d902b408000a33fc63e1d620f75a079
+>>>>>>> 1dd53bd4965752f10cfd919c2129809ca6fd5f00
     </center></div>
 
-    <div class="leftbox">
-      <figure id ="profile"><center><br>My Profile</center></figure>
-      <figure id ="likes"><center><br>Likes</center></figure>
-      <figure id ="events"><center><br>Events</center></figure>
-      <figure id ="aboutus"><center><br>About Us</center></figure>
+    <div class = "buttons">
+      <form action = "/profile" method = "get">
+        <input type = "submit" id = "profile" value = "Profile">
+      </form>
+      <form action = "/likes" method = "post">
+        <input type = "submit" id = "likes" value = "Likes">
+      </form>
+      <form action = "/events" method = "post">
+        <input type = "submit" id = "events" value = "Events">
+      </form>
+      <form action = "/aboutus" method = "get">
+        <input type = "submit" id = "aboutus" value = "About Us">
+      </form>
     </div>
+
     <div class = "recentlikes">
       <center>Recently added likes:</center>
     </div>
     <div class = "recentevents">
       <center>Recently added events:</center>
     </div>
+
 
   </body>
 </html>
