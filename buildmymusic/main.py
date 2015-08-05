@@ -33,10 +33,20 @@ class WelcomeHandler(webapp2.RequestHandler):
     def post(self):
         user = users.get_current_user()
         if user:
+            current_user = User(user = user.user_id(), uname = user.nickname())
+            existing_user = User.query().filter(User.user == current_user.user).fetch()
+            if not existing_user:
+                current_user.put()
             template = jinja_environment.get_template('templates/default.html')
             self.response.out.write(template.render())
         else:
             self.redirect(users.create_login_url(self.request.uri))
+
+class ProfileHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/profile.html')
+        self.response.out.write(template.render())
+
 
 class SearchHandler(webapp2.RequestHandler):
     def post(self):
@@ -84,6 +94,8 @@ class SearchHandler(webapp2.RequestHandler):
 
 
 app = webapp2.WSGIApplication([
+
     ('/', WelcomeHandler),
-    ('/search', SearchHandler)
+    ('/search', SearchHandler),
+    ('/profile', ProfileHandler)
 ], debug=True)

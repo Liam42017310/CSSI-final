@@ -28,6 +28,7 @@ left:}
           top: 20px;
           margin-right: 50px;
           position: relative;
+          overflow: scroll;
           }
 
 .recentevents {
