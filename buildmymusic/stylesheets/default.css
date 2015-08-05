@@ -174,3 +174,12 @@ h1{
                padding-bottom: 10px;
                padding-right: 10px;
            }
+#addedlikes{
+              font-family:"Yanone Kaffeesatz";
+              color: white;
+            }
+
+#addedevents{
+              font-family:"Yanone Kaffeesatz";
+              color: white;
+            }
