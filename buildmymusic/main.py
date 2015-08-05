@@ -51,6 +51,11 @@ class DefaultHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/default.html')
 
+class AboutUsHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/aboutus.html')
+        self.response.out.write(template.render())
+
 
 class SearchHandler(webapp2.RequestHandler):
     def post(self):
@@ -102,5 +107,7 @@ app = webapp2.WSGIApplication([
     ('/', WelcomeHandler),
     ('/default', DefaultHandler),
     ('/search', SearchHandler),
-    ('/profile', ProfileHandler)
+    ('/profile', ProfileHandler),
+    ('/aboutus', AboutUsHandler)
+
 ], debug=True)

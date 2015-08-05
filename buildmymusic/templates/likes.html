@@ -2,47 +2,58 @@
 <html>
   <header>
     <title>
-      likes
+      Buildmymusic
     </title>
     <link rel="stylesheet" type="text/css" href="stylesheets/default.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="my_script.js"></script>
+    <script src="default.js"></script>
+
   </header>
   <body>
     <h1>
-      A++
+      <center>Buildmymusic</center>
     </h1>
     <br>
     <form action = "/search" method = "post">
       <div id = "searching">
-      <center><input type = "text" name = "search" style = "width: 300px; height: 30px"/>
-      <input type="submit" value="search"></center>
+      <center><input type = "text" name = "search" style = "width: 450px; height: 30px"/>
+      <!-- <input type="submit" value="search"></center> -->
+      <input type="image" src="http://www.clker.com/cliparts/Y/x/X/j/U/f/search-button-without-text-md.png" height = "30" width = "30" name="searchbutton" id = "search"></center>
       </div>
     </form>
     <br>
     <br>
-    <center><div class = "centerbox">
-      search page
-    </center></div>
+    <div class = "centerbox">
+        something goes here
+    </div>
 
-    <form action = "/profile" method = "get">
-      <input type = "click"><figure id ="profile"><center><br>My Profile</center></figure>
-    </form>
-    <form action = "/likes" method = "post">
-      <input type = "click"><figure id ="likes"><center><br>Likes</center></figure>
-    </form>
-    <form action = "/events" method = "post">
-      <input type = "click"><figure id ="events"><center><br>Events</center></figure>
-    </form>
-    <form action = "/aboutus" method = "get">
-      <input type = "click"><figure id ="aboutus"><center><br>About Us</center></figure>
-    </form>
+    <div class = "buttons">
+      <form action = "/default" method = "get">
+        <input type="image" src="http://images.clipartpanda.com/brick-house-clipart-RcdAj5Xc9.png" height = "80" width = "80" name="Like" id="gohome" />
+      </form>
+      <br>
+      <form action = "/profile" method = "get">
+        <input type = "submit" id = "profile" value = "Profile">
+      </form>
+      <form action = "/likes" method = "post">
+        <input type = "submit" id = "likes" value = "Likes">
+      </form>
+      <form action = "/events" method = "post">
+        <input type = "submit" id = "events" value = "Events">
+      </form>
+      <form action = "/aboutus" method = "get">
+        <input type = "submit" id = "aboutus" value = "About Us">
+      </form>
+    </div>
+    <div id = "logout">
+      <h2>Log Out</h2>
+    </div>
 
     <div class = "recentlikes">
-      <center>Recently added likes:</center>
+      <center id = "addedlikes"><h3>Recently added likes:</h3></center>
     </div>
     <div class = "recentevents">
-      <center>Recently added events:</center>
+      <center id = "addedevents"><h3>Recently added events:</h3></center>
     </div>
 
   </body>
