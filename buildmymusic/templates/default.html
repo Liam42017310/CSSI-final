@@ -7,12 +7,14 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/default.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="default.js"></script>
+    <script src="scripts/default.js"></script>
 
   </header>
   <body>
     <h1>
+
       <center>Buildmymusic</center>
+
     </h1>
     <br>
     <form action = "/search" method = "post">
@@ -22,12 +24,17 @@
       <input type="image" src="http://www.clker.com/cliparts/Y/x/X/j/U/f/search-button-without-text-md.png" height = "30" width = "30" name="searchbutton" id = "search"></center>
       </div>
     </form>
-    <br>
+
     <br>
     <div class = "centerbox">
-        something goes here
-    </div>
 
+      {% for i in searches %}
+      <div id = "results{{loop.index}}">
+        <strong>Song:</strong> {{i.title}}<br> <strong>Artist:</strong> {{i.artist}} <br><strong>Album:</strong> {{i.album}}<br> <input type="image" src="http://www.clker.com/cliparts/l/M/g/8/7/T/black-and-white-thumbs-up-md.png" height = "35" width = "35" name="Like" class="like" />
+      </div>
+      {% endfor %}
+
+    </div>
     <div class = "buttons">
       <form action = "/default" method = "get">
         <input type="image" src="http://images.clipartpanda.com/brick-house-clipart-RcdAj5Xc9.png" height = "80" width = "80" name="Like" id="gohome" />
@@ -51,10 +58,10 @@
     </div>
 
     <div class = "recentlikes">
-      <center id = "addedlikes"><h3>Recently added likes:</h3></center>
+      <center>Recently added likes:</center>
     </div>
     <div class = "recentevents">
-      <center id = "addedevents"><h3>Recently added events:</h3></center>
+      <center>Recently added events:</center>
     </div>
 
   </body>

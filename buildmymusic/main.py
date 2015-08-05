@@ -5,6 +5,7 @@ import jinja2
 import os
 import json
 import urllib
+import logging
 from google.appengine.api import urlfetch
 from google.appengine.ext import ndb
 from google.appengine.api import users
@@ -85,8 +86,11 @@ class SearchHandler(webapp2.RequestHandler):
                 template_artists.update({'key' + str(index) : search_artist})
 
             for index, key in enumerate(parsed_url_dictionary['results']):
-                search_album = parsed_url_dictionary['results'][index]['collectionName']
-                template_albums.update({'key' + str(index) : search_album})
+                if 'collectionName' in parsed_url_dictionary['results'][index].keys():
+                    search_album = parsed_url_dictionary['results'][index]['collectionName']
+                    template_albums.update({'key' + str(index) : search_album})
+                else:
+                    template_albums.update({'key' + str(index) : ''})
 
             for key, value in template_titles.iteritems():
                 title = value
@@ -100,6 +104,20 @@ class SearchHandler(webapp2.RequestHandler):
                            'searches': search_results}
             self.response.out.write(template.render(passed_vars))
 
+class LikeHandler(webapp2.RequestHandler):
+    def post(self):
+        encoded_request = self.request.get('like')
+        decoded_request = json.loads(encoded_request)
+        current_song_title = decoded_request['title']
+        current_artist_title = decoded_request['artist']
+        current_album_title = decoded_request['album']
+        
+
+
+
+
+
+
 
 
 app = webapp2.WSGIApplication([
@@ -108,6 +126,7 @@ app = webapp2.WSGIApplication([
     ('/default', DefaultHandler),
     ('/search', SearchHandler),
     ('/profile', ProfileHandler),
-    ('/aboutus', AboutUsHandler)
+    ('/aboutus', AboutUsHandler),
+    ('/likes', LikeHandler)
 
 ], debug=True)
