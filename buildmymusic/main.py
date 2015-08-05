@@ -101,13 +101,12 @@ class SearchHandler(webapp2.RequestHandler):
             self.response.out.write(template.render(passed_vars))
 
 
-
 app = webapp2.WSGIApplication([
 
     ('/', WelcomeHandler),
     ('/default', DefaultHandler),
     ('/search', SearchHandler),
     ('/profile', ProfileHandler),
-    ('/aboutus', AboutUsHandler)
+    ('/aboutus', AboutUsHandler),
 
 ], debug=True)
