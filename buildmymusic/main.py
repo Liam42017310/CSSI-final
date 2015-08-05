@@ -183,11 +183,8 @@ app = webapp2.WSGIApplication([
     ('/search', SearchHandler),
     ('/profile', ProfileHandler),
     ('/aboutus', AboutUsHandler),
-<<<<<<< HEAD
-    ('/likes', LikeHandler)
-=======
+    ('/likes', LikeHandler),
     ('/events', EventsHandler),
     ('/otherdefault', OtherDefaultHandler)
->>>>>>> 75f32569c6f6836c05c6eb8cde805d5deb055263
 
 ], debug=True)
