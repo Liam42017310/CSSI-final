@@ -5,8 +5,10 @@
       Buildmymusic
     </title>
     <link rel="stylesheet" type="text/css" href="stylesheets/default.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="default.js"></script>
+
   </header>
   <body>
     <h1>
@@ -16,21 +18,26 @@
     <br>
     <form action = "/search" method = "post">
       <div id = "searching">
-      <center><input type = "text" name = "search" style = "width: 300px; height: 30px"/>
-      <input type="submit" value="search"></center>
+      <center><input type = "text" name = "search" style = "width: 450px; height: 30px"/>
+      <!-- <input type="submit" value="search"></center> -->
+      <input type="image" src="http://www.clker.com/cliparts/Y/x/X/j/U/f/search-button-without-text-md.png" height = "30" width = "30" name="searchbutton" id = "search"></center> 
       </div>
     </form>
     <br>
     <br>
-    <center><div class = "centerbox">
+    <div class = "centerbox">
       {% for i in searches %}
-      {{i.title}} , {{i.artist}} , {{i.album}}
-      <br>
-      <br>
+      <p id = "results">
+        Song: {{i.title}} Artist: {{i.artist}} Album: {{i.album}} <input type="image" src="http://www.clker.com/cliparts/l/M/g/8/7/T/black-and-white-thumbs-up-md.png" height = "35" width = "35" name="Like" id="thumbsuplike" />
+      </p>
       {% endfor %}
-    </center></div>
+    </div>
 
     <div class = "buttons">
+      <form action = "/default" method = "get">
+        <input type="image" src="http://images.clipartpanda.com/brick-house-clipart-RcdAj5Xc9.png" height = "80" width = "80" name="Like" id="gohome" />
+      </form>
+      <br>
       <form action = "/profile" method = "get">
         <input type = "submit" id = "profile" value = "Profile">
       </form>
@@ -44,6 +51,9 @@
         <input type = "submit" id = "aboutus" value = "About Us">
       </form>
     </div>
+    <div id = "logout">
+      <h2>Log Out</h2>
+    </div>
 
     <div class = "recentlikes">
       <center>Recently added likes:</center>
@@ -51,7 +61,6 @@
     <div class = "recentevents">
       <center>Recently added events:</center>
     </div>
-
 
   </body>
 </html>
