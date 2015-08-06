@@ -77,6 +77,12 @@ div {
     left: 210px;
     top: 325px;
 }
+
+strong{
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 45px;
+}
+
 #buttons{
   position: absolute;
   left: 900px;
@@ -90,5 +96,42 @@ div {
   color: blue;
 
 }
+#sun{
+    position: absolute;
+    left: 1100px;
+    top: 0px
+
+}
+
+#profile{
+    position: absolute;
+    left: 1105px;
+    top: 85px;
+}
+
+#likes{
+    position: absolute;
+    left: 1105px;
+    top: 105px;
+}
+
+#events{
+    position: absolute;
+    left: 1105px;
+    top: 125px;
+}
+
+#aboutus{
+    position: absolute;
+    left: 1105px;
+    top: 145px;
+}
+/*#profile-div{
+    position: relative;
+}
+
+#form1{
+  z-index: 2;
+}*/
 
 input[type=file] { width: 1px; }

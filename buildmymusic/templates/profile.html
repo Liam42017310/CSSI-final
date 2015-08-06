@@ -3,6 +3,8 @@
   <head>
     <title>Build My music</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/profile.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/scripts/profile.js"></script>
   </head>
   <style>
 div {
@@ -15,21 +17,20 @@ div {
     overflow: scroll;
 }
 </style>
-<div></div>
-
-
 
   <body>
     <strong>BUILD MY MUSIC</strong>
     <h1>My Profile {{nickname}}</h1>
-    <img height="240" id="generic-image" src="http://img3.wikia.nocookie.net/__cb20121227201208/jamesbond/images/6/61/Generic_Placeholder_-_Profile.jpg">
-    <input type="file" style="visibility:hidden;" id="uploadme" />
-    <input type="button" id="clickme" value="Upload Photo!" />
+
+    <!-- <input type="file" style="visibility:hidden;" id="uploadme" />
+    <input type="button" id="clickme" value="Upload Photo!" /> -->
     <!-- <p>Welcome Build my Music where you get the playlist that you want and the songs you want to hear</p> -->
     <h2>Likes</h2>
+    
+
 
     <form action = "/otherdefault" method = "get">
-      <input type="image" src="http://searchengineland.com/figz/wp-content/seloads/2013/03/logo_512-300x300.png" height = "80" width = "80" id="gohome" />
+      <input id="sun" type="image" src="http://searchengineland.com/figz/wp-content/seloads/2013/03/logo_512-300x300.png" height = "80" width = "80" id="gohome" />
     </form>
     <br>
     <form action = "/profile" method = "get">
@@ -45,18 +46,19 @@ div {
       <input type = "submit" id = "aboutus" value = "About Us">
     </form>
   </div>
-    <form id= "textbox" method="post" action="">
+  <div></div>
+    <!-- <form id= "textbox" method="post" action="">
   <textarea name="comments" cols="25" rows="5" style="width:500px">
   Enter your comments here...
   </textarea><br>
-  </form>
+  </form> -->
 
     <!--this is the first paragraph <br>
     <p>second paragraph</b>
     <!-- this is a comment -->
     <!-- <br>
     Buildmymusic.com -->
-    <!-- <marquee direction="left">check out the links</marquee> -->
+    <!-- <marquee direction="left">there are ways to get this free you tube CONverter</marquee> -->
     <!-- <a id= "facebook" href="http://www.facebook.com"> Go to Facebook!</a>
     <a id= "starbucks" href="http://www.starbucks.com"> Go to Starbucks!</a> -->
 
