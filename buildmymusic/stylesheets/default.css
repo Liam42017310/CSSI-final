@@ -1,5 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=PT+Sans);
 @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+@import url(http://fonts.googleapis.com/css?family=Sigmar+One);
 
 body{
       margin-left: 50px;
@@ -15,6 +16,7 @@ h1{
       position:relative;
       color: #AFEEEE;
       left: 650px;
+      font-family: "Sigmar One";
 }
 
 #searching{
@@ -41,7 +43,7 @@ h1{
             top: -775px;
             left: -15px;
             height: 420px;
-            width: 420px;
+            width: 400px;
           }
 
 .centerbox {
@@ -60,7 +62,7 @@ h1{
               position: relative;
               overflow: scroll;
               background-color: white;
-              opacity:0.6;
+              opacity:0.5;
               filter:alpha(opacity=60);
             }
 

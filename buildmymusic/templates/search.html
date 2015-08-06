@@ -12,7 +12,7 @@
   </header>
   <body>
     <h1>
-      <center>Buildmymusic</center>
+      <strong><center>Buildmymusic</center></strong>
     </h1>
     <br>
     <form action = "/search" method = "post">
@@ -35,13 +35,15 @@
         <strong>Album:</strong>
         <span class="album">{{i.album}}</span><br>
         <input type="image" src="http://www.clker.com/cliparts/l/M/g/8/7/T/black-and-white-thumbs-up-md.png" height = "35" width = "35" name="Like" class="like" />
-        <audio src="https://mp3skull.cr/mp3/lean_on.html"controls>
+        <!-- <audio src="https://mp3skull.cr/mp3/lean_on.html"controls>
         	<embed
         		width="300"
         		height="90"
         		loop="false"
         		autostart="false">
-        </audio>
+        </audio> -->
+        <iframe width="30" height="30" src="https://www.youtube.com/embed/dqt8Z1k0oWQ?autoplay=0">
+        </iframe>
       </div>
       {% endfor %}
 

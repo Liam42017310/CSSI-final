@@ -6,12 +6,19 @@ import os
 import json
 import urllib
 import logging
+# from gdata.youtube.service.YouTubeService import gdata.youtube
+# from gdata.youtube.service.YouTubeService import gdata.youtube.service
 from google.appengine.api import urlfetch
 from google.appengine.ext import ndb
 from google.appengine.api import users
 
 #loads the jinja environment
-
+#API key: AI39si7gj4SXdD_fVcyovbJ_L7RxCLhRnsHUqVF-8Q_yhi7GLUbNXlJHtFfWEfo0MYQfkc_osqx75yiCh3RYkJfUyNyJe1NKxg
+# yt_service = gdata.youtube.service.YouTubeService()
+# Turn on HTTPS/SSL access.
+# Note: SSL is not available at this time for uploads.
+# yt_service.ssl = True
+# yt_service.developer_key = 'AI39si7gj4SXdD_fVcyovbJ_L7RxCLhRnsHUqVF-8Q_yhi7GLUbNXlJHtFfWEfo0MYQfkc_osqx75yiCh3RYkJfUyNyJe1NKxg'
 jinja_environment = jinja2.Environment(
   loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
@@ -172,7 +179,20 @@ class EventsHandler(webapp2.RequestHandler):
 
             self.response.out.write(template.render(passed_vars))
 
-
+# def SearchAndPrintVideosByKeywords(list_of_search_terms):
+#     def get(self):
+#       template = jinja_environment.get_template('templates/default.html')
+#       yt_service = gdata.youtube.service.YouTubeService()
+#       query = gdata.youtube.service.YouTubeVideoQuery()
+#       query.orderby = 'viewCount'
+#       query.racy = 'include'
+#       for search_term in list_of_search_terms:
+#         new_term = search_term.lower()
+#         query.categories.append('/%s' % new_term)
+#       feed = yt_service.YouTubeQuery(query)
+#       PrintVideoFeed(feed)
+#       passed_vars = {'test': feed}
+#       self.response.out.write(template.render(passed_vars))
 
 
 
