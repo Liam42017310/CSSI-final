@@ -10,6 +10,7 @@ from google.appengine.api import urlfetch
 from google.appengine.ext import ndb
 from google.appengine.api import users
 
+
 #loads the jinja environment
 
 jinja_environment = jinja2.Environment(
@@ -50,8 +51,10 @@ class WelcomeHandler(webapp2.RequestHandler):
 
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
+        user = users.get_current_user()
+        nickname = user.nickname()
         template = jinja_environment.get_template('templates/profile.html')
-        self.response.out.write(template.render())
+        self.response.out.write(template.render({"nickname":nickname}))
 
 class DefaultHandler(webapp2.RequestHandler):
     def get(self):
@@ -66,7 +69,6 @@ class AboutUsHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/aboutus.html')
         self.response.out.write(template.render())
-
 
 class SearchHandler(webapp2.RequestHandler):
     def post(self):
@@ -171,7 +173,6 @@ class EventsHandler(webapp2.RequestHandler):
                            'searches': search_results}
 
             self.response.out.write(template.render(passed_vars))
-
 
 app = webapp2.WSGIApplication([
 

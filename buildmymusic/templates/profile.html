@@ -7,7 +7,7 @@
   <style>
 div {
     background-color: lightgrey;
-    width: 400px;
+    width: 800px;
     padding: 25px;
     border: 5px solid navy;
     margin: 5px;
@@ -15,24 +15,50 @@ div {
     overflow: scroll;
 }
 </style>
-<div>Enter Your Information here!!!!!!</div>
+<div></div>
+
+
 
   <body>
     <strong>BUILD MY MUSIC</strong>
-    <h1>My Profile</h1>
-    <img height="240" src="http://img3.wikia.nocookie.net/__cb20121227201208/jamesbond/images/6/61/Generic_Placeholder_-_Profile.jpg">
+    <h1>My Profile {{nickname}}</h1>
+    <img height="240" id="generic-image" src="http://img3.wikia.nocookie.net/__cb20121227201208/jamesbond/images/6/61/Generic_Placeholder_-_Profile.jpg">
     <input type="file" style="visibility:hidden;" id="uploadme" />
     <input type="button" id="clickme" value="Upload Photo!" />
-    <p>Welcome Build my Music where you get the playlist that you want and the songs you want to hear</p>
-    <h2>Auto-Biography</h2>
-    <img height="190" src="http://www.maths.leeds.ac.uk/uploads/tx_templavoila/music.png">
+    <!-- <p>Welcome Build my Music where you get the playlist that you want and the songs you want to hear</p> -->
+    <h2>Likes</h2>
+
+    <form action = "/otherdefault" method = "get">
+      <input type="image" src="http://searchengineland.com/figz/wp-content/seloads/2013/03/logo_512-300x300.png" height = "80" width = "80" id="gohome" />
+    </form>
+    <br>
+    <form action = "/profile" method = "get">
+      <input type = "submit" id = "profile" value = "Profile">
+    </form>
+    <form action = "/likes" method = "post">
+      <input type = "submit" id = "likes" value = "Likes">
+    </form>
+    <form action = "/events" method = "post">
+      <input type = "submit" id = "events" value = "Events">
+    </form>
+    <form action = "/aboutus" method = "get">
+      <input type = "submit" id = "aboutus" value = "About Us">
+    </form>
+  </div>
+    <form id= "textbox" method="post" action="">
+  <textarea name="comments" cols="25" rows="5" style="width:500px">
+  Enter your comments here...
+  </textarea><br>
+  </form>
+
     <!--this is the first paragraph <br>
     <p>second paragraph</b>
     <!-- this is a comment -->
-    <br>
-    Buildmymusic.com
-    <marquee direction="left">check out the links</marquee>
-    <a href="http://www.facebook.com"> Go to Facebook!</a>
+    <!-- <br>
+    Buildmymusic.com -->
+    <!-- <marquee direction="left">check out the links</marquee> -->
+    <!-- <a id= "facebook" href="http://www.facebook.com"> Go to Facebook!</a>
+    <a id= "starbucks" href="http://www.starbucks.com"> Go to Starbucks!</a> -->
 
   </body>
 </html>
