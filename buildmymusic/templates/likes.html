@@ -25,7 +25,19 @@
     <br>
     <br>
     <div class = "centerbox">
-        something goes here
+      <div id = "likedmusic"> <h1> Your liked music! </h1></div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      {% for i in likes %}
+      <div id = "likes{{loop.index}}">
+        <strong>Song:</strong> {{i.title}}<br> <strong>Artist:</strong> {{i.artist}} <br><strong>Album:</strong> {{i.album}}<br>
+      </div>
+      <br>
+      {% endfor %}
     </div>
 
     <div class = "buttons">
