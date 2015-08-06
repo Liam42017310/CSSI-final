@@ -10,7 +10,6 @@ from google.appengine.api import urlfetch
 from google.appengine.ext import ndb
 from google.appengine.api import users
 
-
 #loads the jinja environment
 
 jinja_environment = jinja2.Environment(
@@ -48,6 +47,9 @@ class WelcomeHandler(webapp2.RequestHandler):
             self.response.out.write(template.render())
         else:
             self.redirect(users.create_login_url(self.request.uri))
+            template = jinja_environment.get_template('templates/default.html')
+            self.response.out.write(template.render())
+
 
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
@@ -59,6 +61,30 @@ class ProfileHandler(webapp2.RequestHandler):
 class DefaultHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/default.html')
+        sent_likes = []
+        user_id = users.get_current_user().user_id()
+        users_list = User.query().filter(User.user == user_id).fetch()
+        if not users_list:
+            logging.error("Error: user is not present")
+            return
+        sample_artists = ['Imagine Dragons', 'Eminem', 'Led Zepplin', 'Katy Perry', 'Cold War Kids']
+        for i in range(5):
+            term = {'term' : sample_artists[i]}
+            search_term = urllib.urlencode(term)
+            base_url = 'https://itunes.apple.com/search?media=music&'
+            search_url = base_url + search_term
+            url_content = urlfetch.fetch(search_url).content
+            parsed_url_dictionary = json.loads(url_content)
+            for i in range(5):
+                search_name = parsed_url_dictionary['results'][i]['trackName']
+                search_artist = parsed_url_dictionary['results'][i]['artistName']
+                search_album = parsed_url_dictionary['results'][i]['collectionName']
+                current_suggestion = Like(title = search_name, artist = search_artist, album = search_album)
+                sent_likes.append(current_suggestion)
+        template_vars = {'suggestions': sent_likes}
+
+
+
 
 class OtherDefaultHandler(webapp2.RequestHandler):
     def get(self):
@@ -165,18 +191,34 @@ class LikesHandler(webapp2.RequestHandler):
 
 class EventsHandler(webapp2.RequestHandler):
     def post(self):
+        sent_likes = []
+        user_id = users.get_current_user().user_id()
+        users_list = User.query().filter(User.user == user_id).fetch()
+        if not users_list:
+            logging.error("Error: user is not present")
+            return
+        user = users_list[0]
+        user_likes = user.likes
+        logging.info(user_likes)
+        if user_likes == []:
+            template = jinja_environment.get_template('templates/event_error.html')
+            self.response.out.write(template.render())
         template_concert_names = {}
         template_dates = {}
         template_locations = {}
         search_results = []
-        # user_search = self.request.get('search')
-        user_search = "beyonce"
-        # http://api.bandsintown.com/artists/Skrillex/events.json?api_version=2.0&app_id=YOUR_APP_ID
-        if user_search == '':
-            template = jinja_environment.get_template('templates/events_error.html')
-            self.response.write(template.render())
-        else:
-            template = jinja_environment.get_template('templates/events.html')
+        for like in user_likes:
+            like_key = ndb.Key(Like, int(like.id()))
+            current_like = like_key.get()
+            current_song = current_like.title
+            current_artist = current_like.artist
+            current_album = current_like.album
+            like_object = Like(title = current_song, artist = current_artist, album = current_album)
+            search = like_object.artist
+            logging.info(sent_likes)
+
+            user_search = search.replace(" ", "%20")
+
             # term = {'term' : user_search}
             search_term = user_search
 
@@ -204,12 +246,13 @@ class EventsHandler(webapp2.RequestHandler):
                 location = template_locations[key]
                 current_search_result = Event(concert_name = concert_name, date = date, location = location)
                 search_results.append(current_search_result)
-            passed_vars = {'concertnames': template_concert_names,
-                           'dates': template_dates,
-                           'locations': template_locations,
-                           'searches': search_results}
 
-            self.response.out.write(template.render(passed_vars))
+                passed_vars = {'concertnames': template_concert_names,
+                               'dates': template_dates,
+                               'locations': template_locations,
+                               'searches': search_results}
+        template = jinja_environment.get_template('templates/events.html')
+        self.response.out.write(template.render(passed_vars))
 
 app = webapp2.WSGIApplication([
 
