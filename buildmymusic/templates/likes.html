@@ -5,14 +5,14 @@
       Buildmymusic
     </title>
     <link rel="stylesheet" type="text/css" href="stylesheets/default.css">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="default.js"></script>
+    <script src="jquery.watermarkinput.js" type="text/javascript"></script>
+    <script src="scripts/default.js"></script>
 
   </header>
   <body>
     <h1>
-      <center>Buildmymusic</center>
+      <strong><center>Buildmymusic</center></strong>
     </h1>
     <br>
     <form action = "/search" method = "post">
@@ -25,7 +25,19 @@
     <br>
     <br>
     <div class = "centerbox">
-        something goes here
+      <div id = "likedmusic"> <h1> Your liked music! </h1></div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      {% for i in likes %}
+      <div id = "likes{{loop.index}}">
+        <strong>Song:</strong> {{i.title}}<br> <strong>Artist:</strong> {{i.artist}} <br><strong>Album:</strong> {{i.album}}<br>
+      </div>
+      <br>
+      {% endfor %}
     </div>
 
     <div class = "buttons">
