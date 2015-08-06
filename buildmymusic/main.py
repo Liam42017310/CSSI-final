@@ -39,7 +39,7 @@ class WelcomeHandler(webapp2.RequestHandler):
     def post(self):
         user = users.get_current_user()
         if user:
-            current_user = User(user = user.user_id(), uname = user.nickname())
+            current_user = User(user = user.user_id(), uname = user.nickname(), likes = [])
             existing_user = User.query().filter(User.user == current_user.user).fetch()
             if not existing_user:
                 current_user.put()
@@ -66,7 +66,6 @@ class AboutUsHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/aboutus.html')
         self.response.out.write(template.render())
-
 
 class SearchHandler(webapp2.RequestHandler):
     def post(self):
@@ -114,7 +113,6 @@ class SearchHandler(webapp2.RequestHandler):
                            'searches': search_results}
             self.response.out.write(template.render(passed_vars))
 
-
 class LikeHandler(webapp2.RequestHandler):
     def post(self):
         encoded_request = self.request.get('like')
@@ -122,7 +120,45 @@ class LikeHandler(webapp2.RequestHandler):
         current_song_title = decoded_request['title']
         current_artist_title = decoded_request['artist']
         current_album_title = decoded_request['album']
+        user_id = users.get_current_user().user_id()
+        like = Like.query().filter(Like.title == current_song_title and
+                                   Like.artist == current_artist_title and
+                                   Like.album == current_album_title).fetch()
+        users_list = User.query().filter(User.user == user_id).fetch()
+        if not users_list:
+            logging.error("Error: user is not present")
+            return
+        if not like:
+            clicked_like = Like(title = current_song_title, artist = current_artist_title, album = current_album_title)
+            clicked_like.put()
+            like.append(clicked_like)
+        user = users_list[0]
+        if like[0] not in user.likes:
+            user.likes.append(like[0].key)
+            user.put()
 
+class LikesHandler(webapp2.RequestHandler):
+    def post(self):
+        sent_likes = []
+        user_id = users.get_current_user().user_id()
+        users_list = User.query().filter(User.user == user_id).fetch()
+        if not users_list:
+            logging.error("Error: user is not present")
+            return
+        user = users_list[0]
+        user_likes = user.likes
+        logging.info(user_likes)
+        for like in user_likes:
+            like_key = ndb.Key(Like, int(like.id()))
+            current_like = like_key.get()
+            current_song = current_like.title
+            current_artist = current_like.artist
+            current_album = current_like.album
+            like_object = Like(title = current_song, artist = current_artist, album = current_album)
+            sent_likes.append(like_object)
+        template = jinja_environment.get_template('templates/likes.html')
+        template_vars = {'likes': sent_likes}
+        self.response.out.write(template.render(template_vars))
 
 class EventsHandler(webapp2.RequestHandler):
     def post(self):
@@ -172,10 +208,6 @@ class EventsHandler(webapp2.RequestHandler):
 
             self.response.out.write(template.render(passed_vars))
 
-
-
-
-
 app = webapp2.WSGIApplication([
 
     ('/', WelcomeHandler),
@@ -183,7 +215,8 @@ app = webapp2.WSGIApplication([
     ('/search', SearchHandler),
     ('/profile', ProfileHandler),
     ('/aboutus', AboutUsHandler),
-    ('/likes', LikeHandler),
+    ('/like', LikeHandler),
+    ('/likes', LikesHandler),
     ('/events', EventsHandler),
     ('/otherdefault', OtherDefaultHandler)
 
