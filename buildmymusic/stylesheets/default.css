@@ -1,29 +1,31 @@
 @import url(http://fonts.googleapis.com/css?family=PT+Sans);
 @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
 @import url(http://fonts.googleapis.com/css?family=Sigmar+One);
+@import url(http://fonts.googleapis.com/css?family=Fredoka+One);
+@import url(http://fonts.googleapis.com/css?family=Archivo+Narrow);
 
 body{
       margin-left: 50px;
       margin-right:100px;
       position:relative;
       background-size: cover;
-      background-image: url("http://www.freewallpaperfullhd.com/wp-content/uploads/2015/03/wallpapers/ocean_background_3-wallpaper-1920x1200.jpg");
+      background-image: url("http://images.forwallpaper.com/files/images/a/a83c/a83c0fc0/238438/swimming-pools-water-miscellaneous-photos-background-creative.jpg");
       left: -50px;
     }
 h1{
       float:left;
       clear:both;
       position:relative;
-      color: #AFEEEE;
+      color: #99FFCC;
       left: 650px;
-      font-family: "Sigmar One";
+      font-family: "Fredoka One";
 }
 
 #searching{
             float:left;
             clear:both;
             position:relative;
-            left:600px;
+            left:580px;
           }
 #search{
           position:relative;
@@ -31,7 +33,7 @@ h1{
         }
 
 #searchbar{
-            opacity:0.6;
+            opacity:0.7;
             filter:alpha(opacity=60);
             color: white;
             color: black;
@@ -52,7 +54,7 @@ h1{
               padding-right: 20px;
               padding-left: 20px;
               width: 950px;
-              height: 625px;
+              height: 600px;
               float: left;
               margin-left: 50px;
               clear: both;
@@ -62,13 +64,13 @@ h1{
               position: relative;
               overflow: scroll;
               background-color: white;
-              opacity:0.5;
+              opacity:0.7;
               filter:alpha(opacity=60);
             }
 
 #results{
           color:black;
-          font-family: "PT Sans";
+          font-family: "Archivo Narrow";
         }
 
 .buttons {
@@ -84,7 +86,7 @@ h1{
 
 #profile {
 /*position: fixed;*/
-            font-family: "Yanone Kaffeesatz";
+            font-family: "Sigmar One";
             color: black;
             font-size: 20px;
             border-radius: px;
@@ -95,13 +97,13 @@ h1{
             top:275px;
             height: 60px;
             width: 230px;
-            opacity:0.6;
+            opacity:0.7;
             filter:alpha(opacity=60);
          }
 
 #likes {
 /*position: fixed;*/
-          font-family: "Yanone Kaffeesatz";
+          font-family: "Sigmar One";
           color: black;
           font-size: 20px;
           border-radius: px;
@@ -119,7 +121,7 @@ h1{
 
 #events {
 /*position: fixed;*/
-            font-family: "Yanone Kaffeesatz";
+            font-family: "Sigmar One";
             color: black;
             font-size: 20px;
             border-radius: px;
@@ -137,7 +139,7 @@ h1{
 
 #aboutus {
 /*position: fixed;*/
-            font-family: "Yanone Kaffeesatz";
+            font-family: "Sigmar One";
             color: black;
             font-size: 20px;
             border-radius: px;
@@ -167,7 +169,8 @@ h1{
 
 #gohome{
          position: relative;
-         left:80px;
+         left:70px;
+         top: 10px;
        }
 #likedmusic{
               position: relative;
@@ -175,3 +178,5 @@ h1{
             }
 
 input.watermark {color: black; }
+
+#aboutustitle{font-family: Sigmar One;}
