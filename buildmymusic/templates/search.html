@@ -5,8 +5,8 @@
       Buildmymusic
     </title>
     <link rel="stylesheet" type="text/css" href="stylesheets/default.css">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="jquery.watermarkinput.js" type="text/javascript"></script>
     <script src="scripts/default.js"></script>
 
   </header>
@@ -35,6 +35,13 @@
         <strong>Album:</strong>
         <span class="album">{{i.album}}</span><br>
         <input type="image" src="http://www.clker.com/cliparts/l/M/g/8/7/T/black-and-white-thumbs-up-md.png" height = "35" width = "35" name="Like" class="like" />
+        <audio src="https://mp3skull.cr/mp3/lean_on.html"controls>
+        	<embed
+        		width="300"
+        		height="90"
+        		loop="false"
+        		autostart="false">
+        </audio>
       </div>
       {% endfor %}
 

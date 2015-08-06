@@ -49,7 +49,7 @@ h1{
               padding-top: 10px;
               padding-right: 20px;
               padding-left: 20px;
-              width: 1000px;
+              width: 950px;
               height: 625px;
               float: left;
               margin-left: 50px;
@@ -172,48 +172,4 @@ h1{
               left:-600px;
             }
 
-/*.recentevents {*/
- /* position: fixed; */
-                 /*width: 300px;
-                 height: 340px;
-                 border: 2px solid #FF3300;
-                 float: left;
-                 clear: both;
-                 position: relative;
-                 left: 1050px;
-                 top: -1580px;
-                 padding-top: 10px;
-                 padding-left: 10px;
-                 padding-bottom: 10px;
-                 padding-right: 10px;
-                 background-color: #F87217;
-             }*/
-
-/*.recentlikes {*/
- /* position: fixed; */
-               /*width: 300px;
-               height: 340px;
-               border: 2px solid #FF3300;
-               float: left;
-               clear: left;
-               position: relative;
-               top: -790px;
-               left: 1050px;
-               margin-right: 25px;
-               margin-top: 25px;
-               margin-bottom: 25px;
-               padding-top: 10px;
-               padding-left: 10px;
-               background-color: #F87217;
-               padding-bottom: 10px;
-               padding-right: 10px;
-           }*/
-/*#addedlikes{
-              font-family:"Yanone Kaffeesatz";
-              color: white;
-            }
-
-#addedevents{
-              font-family:"Yanone Kaffeesatz";
-              color: white;
-            }*/
+input.watermark {color: black; }
