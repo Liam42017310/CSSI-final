@@ -28,7 +28,7 @@
 
       {% for i in searches %}
       <div id = "results{{loop.index}}">
-        <div id = "results">
+
         <strong>Song:</strong>
         <span class="song">{{i.title}}</span><br>
         <strong>Artist:</strong>
@@ -47,13 +47,13 @@
         Listen to {{i.title}} on <a target = "_blank" href = "http://youtube.com"> YouTube </a>
         <br>
         <br>
-        </div>
+
       </div>
       {% endfor %}
 
     </div>
     <div class = "buttons">
-      <form action = "/otherdefault" method = "get">
+      <form action = "/default" method = "post">
         <input type="image" src="http://www.userlogos.org/files/logos/sjdvda/musicblack.png" height = "100" width = "100" name="Like" id="gohome" />
       </form>
       <br>

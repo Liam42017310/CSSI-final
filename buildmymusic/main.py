@@ -59,7 +59,7 @@ class ProfileHandler(webapp2.RequestHandler):
         self.response.out.write(template.render({"nickname":nickname}))
 
 class DefaultHandler(webapp2.RequestHandler):
-    def get(self):
+    def post(self):
         template = jinja_environment.get_template('templates/default.html')
         sent_likes = []
         user_id = users.get_current_user().user_id()
@@ -82,14 +82,14 @@ class DefaultHandler(webapp2.RequestHandler):
                 current_suggestion = Like(title = search_name, artist = search_artist, album = search_album)
                 sent_likes.append(current_suggestion)
         template_vars = {'suggestions': sent_likes}
+        self.response.out.write(template.render(template_vars))
 
 
 
-
-class OtherDefaultHandler(webapp2.RequestHandler):
-    def get(self):
-        template = jinja_environment.get_template('templates/default.html')
-        self.response.out.write(template.render())
+# class OtherDefaultHandler(webapp2.RequestHandler):
+#     def get(self):
+#         template = jinja_environment.get_template('templates/default.html')
+#         self.response.out.write(template.render())
 
 class AboutUsHandler(webapp2.RequestHandler):
     def get(self):
@@ -264,6 +264,6 @@ app = webapp2.WSGIApplication([
     ('/like', LikeHandler),
     ('/likes', LikesHandler),
     ('/events', EventsHandler),
-    ('/otherdefault', OtherDefaultHandler)
+
 
 ], debug=True)
