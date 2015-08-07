@@ -6,7 +6,7 @@
     </title>
     <link rel="stylesheet" type="text/css" href="stylesheets/default.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="jquery.watermarkinput.js" type="text/javascript"></script>
+    <!-- <script src="jquery.watermarkinput.js" type="text/javascript"></script> -->
     <script src="scripts/default.js"></script>
 
   </header>
@@ -28,7 +28,6 @@
 
       {% for i in searches %}
       <div id = "results{{loop.index}}">
-        <div id = "results">
         <strong>Song:</strong>
         <span class="song">{{i.title}}</span><br>
         <strong>Artist:</strong>
@@ -37,17 +36,9 @@
         <span class="album">{{i.album}}</span><br>
         <input type="image" src="http://www.clker.com/cliparts/l/M/g/8/7/T/black-and-white-thumbs-up-md.png" height = "35" width = "35" name="Like" class="like" />
         <br>
-        <!-- <audio src="https://mp3skull.cr/mp3/lean_on.html"controls>
-        	<embed
-        		width="300"
-        		height="90"
-        		loop="false"
-        		autostart="false">
-        </audio> -->
         Listen to {{i.title}} on <a target = "_blank" href = "http://youtube.com"> YouTube </a>
         <br>
         <br>
-        </div>
       </div>
       {% endfor %}
 

@@ -58,7 +58,7 @@ class ProfileHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('templates/profile.html')
         self.response.out.write(template.render({"nickname":nickname}))
 
-class DefaultHandler(webapp2.RequestHandler):
+class OtherDefaultHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/default.html')
         sent_likes = []
@@ -82,11 +82,13 @@ class DefaultHandler(webapp2.RequestHandler):
                 current_suggestion = Like(title = search_name, artist = search_artist, album = search_album)
                 sent_likes.append(current_suggestion)
         template_vars = {'suggestions': sent_likes}
+        self.response.out.write(template.render(template_vars))
 
 
 
 
-class OtherDefaultHandler(webapp2.RequestHandler):
+
+class DefaultHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/default.html')
         self.response.out.write(template.render())
@@ -149,6 +151,7 @@ class LikeHandler(webapp2.RequestHandler):
         current_song_title = decoded_request['title']
         current_artist_title = decoded_request['artist']
         current_album_title = decoded_request['album']
+        logging.info("Received like: " + current_song_title + " + " + current_artist_title + " + " + current_album_title)
         user_id = users.get_current_user().user_id()
         like = Like.query().filter(Like.title == current_song_title and
                                    Like.artist == current_artist_title and
@@ -183,8 +186,13 @@ class LikesHandler(webapp2.RequestHandler):
             current_song = current_like.title
             current_artist = current_like.artist
             current_album = current_like.album
-            like_object = Like(title = current_song, artist = current_artist, album = current_album)
-            sent_likes.append(like_object)
+            #like_object = Like(title = current_song, artist = current_artist, album = current_album)
+            sent_likes.append({
+                'title' : current_song,
+                'artist': current_artist,
+                'album' : current_album,
+            })
+        logging.info(sent_likes);
         template = jinja_environment.get_template('templates/likes.html')
         template_vars = {'likes': sent_likes}
         self.response.out.write(template.render(template_vars))
@@ -216,8 +224,9 @@ class EventsHandler(webapp2.RequestHandler):
             like_object = Like(title = current_song, artist = current_artist, album = current_album)
             search = like_object.artist
             logging.info(sent_likes)
-
-            user_search = search.replace(" ", "%20")
+            user_search1 = search.replace(",", "%20")
+            user_search2 = user_search1.replace("&", "%20")
+            user_search = user_search2.replace(" ", "%20")
 
             # term = {'term' : user_search}
             search_term = user_search
