@@ -11,15 +11,10 @@
 </style>
 
   <body>
-    <strong>BUILD MY MUSIC</strong>
+    <span id = 'head1'>BUILD MY MUSIC</span>
     <h1>My Profile {{nickname}}</h1>
     <div id= "what">
       <div id = "likedmusic"> <h1> Your liked music! </h1></div>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
       <br>
       {% for i in likes %}
       <div id = "likes{{loop.index}}">
