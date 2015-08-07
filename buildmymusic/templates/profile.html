@@ -13,20 +13,22 @@
   <body>
     <strong>BUILD MY MUSIC</strong>
     <h1>My Profile {{nickname}}</h1>
-    <div id= "like"></div>
-    <div id= "what"></div>
-
-    <!-- <input type="file" style="visibility:hidden;" id="uploadme" />
-    <input type="button" id="clickme" value="Upload Photo!" /> -->
-    <!-- <p>Welcome Build my Music where you get the playlist that you want and the songs you want to hear</p> -->
+    <div id= "What">
+      <div id = "likedmusic"> <h1> Your liked music! </h1></div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      {% for i in likes %}
+      <div id = "likes{{loop.index}}">
+        <strong>Song:</strong> {{i.title}}<br> <strong>Artist:</strong> {{i.artist}} <br><strong>Album:</strong> {{i.album}}<br>
+      </div>
+      <br>
+      {% endfor %}
+    </div>
     <h2>Likes</h2>
-<<<<<<< HEAD
-    <h3>Events</h3>
-
-=======
->>>>>>> 12dfbe8baedd8cc8aad649d5d061fc0a69b8f425
-
-
 
     <form action = "/default" method = "post">
       <input id="sun" type="image" src="http://searchengineland.com/figz/wp-content/seloads/2013/03/logo_512-300x300.png" height = "80" width = "80" id="gohome" />
@@ -46,14 +48,7 @@
     </form>
 
 
-    <!--this is the first paragraph <br>
-    <p>second paragraph</b>
-    <!-- this is a comment -->
-    <!-- <br>
-    Buildmymusic.com -->
-    <!-- <marquee direction="left">there are ways to get this free you tube CONverter</marquee> -->
-    <!-- <a id= "facebook" href="http://www.facebook.com"> Go to Facebook!</a>
-    <a id= "starbucks" href="http://www.starbucks.com"> Go to Starbucks!</a> -->
+
 
   </body>
 </html>
