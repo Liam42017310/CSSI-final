@@ -9,7 +9,8 @@ body{
       margin-right:100px;
       position:relative;
       background-size: cover;
-      background-image: url("http://images.forwallpaper.com/files/images/a/a83c/a83c0fc0/238438/swimming-pools-water-miscellaneous-photos-background-creative.jpg");
+      background-image: url("http://www.freelargeimages.com/wp-content/uploads/2014/12/Cool_background-7.jpg");
+
       left: -50px;
     }
 h1{
@@ -172,7 +173,7 @@ h1{
          left:70px;
          top: 10px;
        }
-#likedmusic{
+#likedmusic{ font-family: "Sigmar One";
               position: relative;
               left:-600px;
             }
@@ -180,3 +181,9 @@ h1{
 input.watermark {color: black; }
 
 #aboutustitle{font-family: Sigmar One;}
+#christinesinfo{font-family: Archivo Narrow}
+#christinespic{float: right;
+               clear:both;
+               position:relative;
+               top:-30px;
+               left: -275px;}

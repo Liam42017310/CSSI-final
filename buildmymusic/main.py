@@ -50,16 +50,98 @@ class WelcomeHandler(webapp2.RequestHandler):
             template = jinja_environment.get_template('templates/default.html')
             self.response.out.write(template.render())
 
-
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         nickname = user.nickname()
+        sent_likes = []
+        user_id = users.get_current_user().user_id()
+        users_list = User.query().filter(User.user == user_id).fetch()
+        if not users_list:
+            logging.error("Error: user is not present")
+            return
+        user = users_list[0]
+        user_likes = user.likes
+        logging.info(user_likes)
+        if user_likes == []:
+            template = jinja_environment.get_template('templates/event_error.html')
+            self.response.out.write(template.render())
+        template_concert_names = {}
+        template_dates = {}
+        template_locations = {}
+        search_results = []
+        for like in user_likes:
+            like_key = ndb.Key(Like, int(like.id()))
+            current_like = like_key.get()
+            current_song = current_like.title
+            current_artist = current_like.artist
+            current_album = current_like.album
+            like_object = Like(title = current_song, artist = current_artist, album = current_album)
+            search = like_object.artist
+            logging.info(sent_likes)
+            user_search1 = search.replace(",", "%20")
+            user_search2 = user_search1.replace("&", "%20")
+            user_search = user_search2.replace(" ", "%20")
+
+            # term = {'term' : user_search}
+            search_term = user_search
+
+            base_url = 'http://api.bandsintown.com/artists/'
+            search_url = base_url + search_term + "/events.json?api_version=2.0&app_id=buildmymusic"
+            url_content = urlfetch.fetch(search_url).content
+            parsed_url_dictionary = json.loads(url_content)
+            # template_vars = {"dictionary": parsed_url_dictionary}
+
+            for index, key in enumerate(parsed_url_dictionary):
+                search_title = parsed_url_dictionary[index]['title']
+                template_concert_names.update({'key' + str(index) : search_title})
+
+            for index, key in enumerate(parsed_url_dictionary):
+                search_date = parsed_url_dictionary[index]['formatted_datetime']
+                template_dates.update({'key' + str(index) : search_date})
+
+            for index, key in enumerate(parsed_url_dictionary):
+                search_location = parsed_url_dictionary[index]['formatted_location']
+                template_locations.update({'key' + str(index) : search_location})
+
+            for key, value in template_concert_names.iteritems():
+                concert_name = value
+                date = template_dates[key]
+                location = template_locations[key]
+                current_search_result = Event(concert_name = concert_name, date = date, location = location)
+                search_results.append(current_search_result)
+                passed_vars = {'concertnames': template_concert_names,
+                               'dates': template_dates,
+                               'locations': template_locations,
+                               'searches': search_results}
+        sent_likes = []
+        user_id = users.get_current_user().user_id()
+        users_list = User.query().filter(User.user == user_id).fetch()
+        if not users_list:
+            logging.error("Error: user is not present")
+            return
+        user = users_list[0]
+        user_likes = user.likes
+        logging.info(user_likes)
+        for like in user_likes:
+            like_key = ndb.Key(Like, int(like.id()))
+            current_like = like_key.get()
+            current_song = current_like.title
+            current_artist = current_like.artist
+            current_album = current_like.album
+            #like_object = Like(title = current_song, artist = current_artist, album = current_album)
+            sent_likes.append({
+                'title' : current_song,
+                'artist': current_artist,
+                'album' : current_album,
+            })
+        logging.info(sent_likes);
         template = jinja_environment.get_template('templates/profile.html')
-        self.response.out.write(template.render({"nickname":nickname}))
+        template_vars = {'likes': sent_likes, 'events': passed_vars}
+        self.response.out.write(template.render(template_vars))
 
 class DefaultHandler(webapp2.RequestHandler):
-    def get(self):
+    def post(self):
         template = jinja_environment.get_template('templates/default.html')
         sent_likes = []
         user_id = users.get_current_user().user_id()
@@ -82,14 +164,7 @@ class DefaultHandler(webapp2.RequestHandler):
                 current_suggestion = Like(title = search_name, artist = search_artist, album = search_album)
                 sent_likes.append(current_suggestion)
         template_vars = {'suggestions': sent_likes}
-
-
-
-
-class OtherDefaultHandler(webapp2.RequestHandler):
-    def get(self):
-        template = jinja_environment.get_template('templates/default.html')
-        self.response.out.write(template.render())
+        self.response.out.write(template.render(template_vars))
 
 class AboutUsHandler(webapp2.RequestHandler):
     def get(self):
@@ -149,6 +224,7 @@ class LikeHandler(webapp2.RequestHandler):
         current_song_title = decoded_request['title']
         current_artist_title = decoded_request['artist']
         current_album_title = decoded_request['album']
+        logging.info("Received like: " + current_song_title + " + " + current_artist_title + " + " + current_album_title)
         user_id = users.get_current_user().user_id()
         like = Like.query().filter(Like.title == current_song_title and
                                    Like.artist == current_artist_title and
@@ -183,8 +259,13 @@ class LikesHandler(webapp2.RequestHandler):
             current_song = current_like.title
             current_artist = current_like.artist
             current_album = current_like.album
-            like_object = Like(title = current_song, artist = current_artist, album = current_album)
-            sent_likes.append(like_object)
+            #like_object = Like(title = current_song, artist = current_artist, album = current_album)
+            sent_likes.append({
+                'title' : current_song,
+                'artist': current_artist,
+                'album' : current_album,
+            })
+        logging.info(sent_likes);
         template = jinja_environment.get_template('templates/likes.html')
         template_vars = {'likes': sent_likes}
         self.response.out.write(template.render(template_vars))
@@ -216,8 +297,9 @@ class EventsHandler(webapp2.RequestHandler):
             like_object = Like(title = current_song, artist = current_artist, album = current_album)
             search = like_object.artist
             logging.info(sent_likes)
-
-            user_search = search.replace(" ", "%20")
+            user_search1 = search.replace(",", "%20")
+            user_search2 = user_search1.replace("&", "%20")
+            user_search = user_search2.replace(" ", "%20")
 
             # term = {'term' : user_search}
             search_term = user_search
@@ -264,6 +346,6 @@ app = webapp2.WSGIApplication([
     ('/like', LikeHandler),
     ('/likes', LikesHandler),
     ('/events', EventsHandler),
-    ('/otherdefault', OtherDefaultHandler)
+
 
 ], debug=True)
