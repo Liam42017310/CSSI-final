@@ -50,7 +50,6 @@ class WelcomeHandler(webapp2.RequestHandler):
             template = jinja_environment.get_template('templates/default.html')
             self.response.out.write(template.render())
 
-
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
@@ -347,6 +346,6 @@ app = webapp2.WSGIApplication([
     ('/like', LikeHandler),
     ('/likes', LikesHandler),
     ('/events', EventsHandler),
-    ('/otherdefault', OtherDefaultHandler)
+
 
 ], debug=True)

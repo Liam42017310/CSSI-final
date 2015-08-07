@@ -28,6 +28,7 @@
 
       {% for i in searches %}
       <div id = "results{{loop.index}}">
+
         <strong>Song:</strong>
         <span class="song">{{i.title}}</span><br>
         <strong>Artist:</strong>
@@ -44,7 +45,7 @@
 
     </div>
     <div class = "buttons">
-      <form action = "/otherdefault" method = "get">
+      <form action = "/default" method = "post">
         <input type="image" src="http://www.userlogos.org/files/logos/sjdvda/musicblack.png" height = "100" width = "100" name="Like" id="gohome" />
       </form>
       <br>

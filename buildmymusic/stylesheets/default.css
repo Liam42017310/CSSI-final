@@ -9,7 +9,8 @@ body{
       margin-right:100px;
       position:relative;
       background-size: cover;
-      background-image: url("http://us.123rf.com/450wm/passengerz/passengerz1404/passengerz140400036/27515256-greeting-card-with-nice-color-house-sweet-home-on-monochrome-blue-pattern-background-with-houses-tre.jpg");
+      background-image: url("http://www.freelargeimages.com/wp-content/uploads/2014/12/Cool_background-7.jpg");
+
       left: -50px;
     }
 h1{
@@ -180,3 +181,9 @@ h1{
 input.watermark {color: black; }
 
 #aboutustitle{font-family: Sigmar One;}
+#christinesinfo{font-family: Archivo Narrow}
+#christinespic{float: right;
+               clear:both;
+               position:relative;
+               top:-30px;
+               left: -275px;}
