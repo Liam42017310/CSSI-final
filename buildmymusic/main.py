@@ -39,7 +39,7 @@ class LogoutHandler(webapp2.RequestHandler):
 
 class ReferenceHandler(webapp2.RequestHandler):
     def get(self):
-        templte = jinja_environment.get_template('templates/references.html')
+        template = jinja_environment.get_template('templates/references.html')
         self.response.out.write(template.render())
 
 class WelcomeHandler(webapp2.RequestHandler):
