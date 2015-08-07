@@ -12,16 +12,17 @@
 
   <body>
     <span id = 'head1'>BUILD MY MUSIC</span>
-    <h1>My Profile {{nickname}}</h1>
+    <h1 >My Profile {{nickname}}</h1>
+    <img id = "profilepic" src = "http://www.eurogeosurveys.org/wp-content/uploads/2014/02/default_profile_pic.jpg" height = "250" width = "190">
     <div id= "what">
-      <div id = "likedmusic"> <h1> Your liked music! </h1></div>
-      <br>
-      {% for i in likes %}
+      <!-- <div id = "likedmusic"> <h1> Your liked music! </h1></div> -->
+      <div id = "likesinfo">{% for i in likes %}
       <div id = "likes{{loop.index}}">
         <strong>Song:</strong> {{i.title}}<br> <strong>Artist:</strong> {{i.artist}} <br><strong>Album:</strong> {{i.album}}<br>
+        <br>
       </div>
       <br>
-      {% endfor %}
+      {% endfor %}</div>
     </div>
     <h2>Likes</h2>
 

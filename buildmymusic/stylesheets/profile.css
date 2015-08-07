@@ -19,7 +19,7 @@ h1 {
   position: absolute;
   left: 0px;
   top: 40px;
-  color: blue;
+  color: white;
   /*background-color: #F0FFFF;*/
 }
 
@@ -30,6 +30,13 @@ h2 {
   left: 15px;
   top: 350px;
   color: white;
+}
+#profilepic{
+              float: right;
+              clear: both;
+              position: relative;
+              left: -675px;
+              top: 70px;
 }
 
 
@@ -81,6 +88,8 @@ div {
 #head1{
     font-family: Impact, Charcoal, sans-serif;
     font-size: 45px;
+    position: relative;
+    left: 40px;
 }
 
 #buttons{
@@ -100,8 +109,10 @@ div {
 
 #sun{
     position: absolute;
-    left: 1100px;
-    top: 0px
+    left: 1000px;
+    top: 425px;
+    width: 300px;
+    height:300px;
 
 }
 #profile{
@@ -137,12 +148,19 @@ h3{
 
 #what{
   background-color: lightgrey;
-  width: 800px;
+  width: 700px;
   padding: 25px;
   border: 5px solid navy;
   margin: 5px;
-  height: 400px;
+  height: 300px;
   overflow: scroll;
+
+
+}
+
+#likesinfo{
+            position:relative;
+            top:-375px;
 }
 
 input[type=file] { width: 1px; }

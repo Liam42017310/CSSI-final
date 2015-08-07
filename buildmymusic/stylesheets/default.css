@@ -242,3 +242,13 @@ input.watermark {color: black; }
           position:relative;
           left: 250px;
           top:-90px;}
+
+#shaunspic{
+            float:left;
+            clear:both;
+            position: relative;
+            top: -235px;
+            left: 60px;
+}
+#referencestart{font-family: PT Sans;
+                }
