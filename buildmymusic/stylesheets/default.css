@@ -219,9 +219,20 @@ h1{
 input.watermark {color: black; }
 
 #aboutustitle{font-family: Sigmar One;}
-#christinesinfo{font-family: Archivo Narrow}
 #christinespic{float: right;
                clear:both;
                position:relative;
-               top:-30px;
-               left: -275px;}
+               top:-165px;
+               left: -750px;}
+#christinesinfo{height: 100px;
+                width: 600px;
+                position: relative;
+                left: 250px;}
+#liamsinfo{height: 100px;
+          width: 500px;
+          position:relative;
+          left: 110px;
+          top: 20px;}
+#liamspic{position:relative;
+          top: -130px;
+          left: 610px;}

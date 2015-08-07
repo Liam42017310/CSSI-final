@@ -25,21 +25,10 @@
     <br>
     <br>
     <div class = "centerbox">
-      <div id = "likedmusic"> <h1> Your liked music! </h1></div>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      {% for i in likes %}
-      <div id = "likes{{loop.index}}">
-        <strong>Song:</strong> {{i.title}}<br> <strong>Artist:</strong> {{i.artist}} <br><strong>Album:</strong> {{i.album}}<br>
-      </div>
-      <br>
-      {% endfor %}
-    </div>
+      <h1 id = "referencetitle">References</h1>
 
+
+    </div>
     <div class = "buttons">
       <form action = "/default" method = "post">
         <input type="image" src="http://www.userlogos.org/files/logos/sjdvda/musicblack.png" height = "100" width = "100" name="Like" id="gohome" />
@@ -62,6 +51,9 @@
       </form>
     </div>
 
+    <form action = "/logout" method = "post">
+      <input type = "submit" id = "logout" value = "Log Out">
+    </form>
 
     <img id = "musicnote" src = "http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/black-paint-splatter-icons-media/001603-black-paint-splatter-icon-media-music-eighth-notes.png" height = "500" width = "500">
 
