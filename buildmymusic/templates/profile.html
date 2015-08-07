@@ -7,26 +7,21 @@
     <script src="/scripts/profile.js"></script>
   </head>
   <style>
-div {
-    background-color: lightgrey;
-    width: 800px;
-    padding: 25px;
-    border: 5px solid navy;
-    margin: 5px;
-    height: 320px;
-    overflow: scroll;
-}
+
 </style>
 
   <body>
     <strong>BUILD MY MUSIC</strong>
     <h1>My Profile {{nickname}}</h1>
+    <div id= "like"></div>
+    <div id= "what"></div>
 
     <!-- <input type="file" style="visibility:hidden;" id="uploadme" />
     <input type="button" id="clickme" value="Upload Photo!" /> -->
     <!-- <p>Welcome Build my Music where you get the playlist that you want and the songs you want to hear</p> -->
     <h2>Likes</h2>
-    
+    <h3>Events</h3>
+
 
 
     <form action = "/otherdefault" method = "get">
@@ -45,13 +40,7 @@ div {
     <form action = "/aboutus" method = "get">
       <input type = "submit" id = "aboutus" value = "About Us">
     </form>
-  </div>
-  <div></div>
-    <!-- <form id= "textbox" method="post" action="">
-  <textarea name="comments" cols="25" rows="5" style="width:500px">
-  Enter your comments here...
-  </textarea><br>
-  </form> -->
+
 
     <!--this is the first paragraph <br>
     <p>second paragraph</b>
