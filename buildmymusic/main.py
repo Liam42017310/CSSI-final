@@ -46,6 +46,7 @@ class WelcomeHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/welcome.html')
         self.response.out.write(template.render())
+
     def post(self):
         user = users.get_current_user()
         if user:
@@ -57,8 +58,6 @@ class WelcomeHandler(webapp2.RequestHandler):
             self.response.out.write(template.render())
         else:
             self.redirect(users.create_login_url(self.request.uri))
-            template = jinja_environment.get_template('templates/default.html')
-            self.response.out.write(template.render())
 
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
@@ -91,30 +90,62 @@ class ProfileHandler(webapp2.RequestHandler):
         self.response.out.write(template.render(template_vars))
 
 class DefaultHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/default.html')
+        sent_likes = []
+        user = users.get_current_user()
+        if not user:
+            self.redirect(users.create_login_url(self.request.uri))
+        else:
+            user_id = user.user_id()
+            users_list = User.query().filter(User.user == user_id).fetch()
+            if not users_list:
+                logging.error("Error: user is not present")
+                return
+            sample_artists = ['Imagine Dragons', 'Eminem', 'Led Zepplin', 'Katy Perry', 'Cold War Kids']
+            for i in range(5):
+                term = {'term' : sample_artists[i]}
+                search_term = urllib.urlencode(term)
+                base_url = 'https://itunes.apple.com/search?media=music&'
+                search_url = base_url + search_term
+                url_content = urlfetch.fetch(search_url).content
+                parsed_url_dictionary = json.loads(url_content)
+                for i in range(5):
+                    search_name = parsed_url_dictionary['results'][i]['trackName']
+                    search_artist = parsed_url_dictionary['results'][i]['artistName']
+                    search_album = parsed_url_dictionary['results'][i]['collectionName']
+                    current_suggestion = Like(title = search_name, artist = search_artist, album = search_album)
+                    sent_likes.append(current_suggestion)
+            template_vars = {'suggestions': sent_likes}
+            self.response.out.write(template.render(template_vars))
     def post(self):
         template = jinja_environment.get_template('templates/default.html')
         sent_likes = []
-        user_id = users.get_current_user().user_id()
-        users_list = User.query().filter(User.user == user_id).fetch()
-        if not users_list:
-            logging.error("Error: user is not present")
-            return
-        sample_artists = ['Imagine Dragons', 'Eminem', 'Led Zepplin', 'Katy Perry', 'Cold War Kids']
-        for i in range(5):
-            term = {'term' : sample_artists[i]}
-            search_term = urllib.urlencode(term)
-            base_url = 'https://itunes.apple.com/search?media=music&'
-            search_url = base_url + search_term
-            url_content = urlfetch.fetch(search_url).content
-            parsed_url_dictionary = json.loads(url_content)
+        user = users.get_current_user()
+        if not user:
+            self.redirect(users.create_login_url(self.request.uri))
+        else:
+            user_id = user.user_id()
+            users_list = User.query().filter(User.user == user_id).fetch()
+            if not users_list:
+                logging.error("Error: user is not present")
+                return
+            sample_artists = ['Imagine Dragons', 'Eminem', 'Led Zepplin', 'Katy Perry', 'Cold War Kids']
             for i in range(5):
-                search_name = parsed_url_dictionary['results'][i]['trackName']
-                search_artist = parsed_url_dictionary['results'][i]['artistName']
-                search_album = parsed_url_dictionary['results'][i]['collectionName']
-                current_suggestion = Like(title = search_name, artist = search_artist, album = search_album)
-                sent_likes.append(current_suggestion)
-        template_vars = {'suggestions': sent_likes}
-        self.response.out.write(template.render(template_vars))
+                term = {'term' : sample_artists[i]}
+                search_term = urllib.urlencode(term)
+                base_url = 'https://itunes.apple.com/search?media=music&'
+                search_url = base_url + search_term
+                url_content = urlfetch.fetch(search_url).content
+                parsed_url_dictionary = json.loads(url_content)
+                for i in range(5):
+                    search_name = parsed_url_dictionary['results'][i]['trackName']
+                    search_artist = parsed_url_dictionary['results'][i]['artistName']
+                    search_album = parsed_url_dictionary['results'][i]['collectionName']
+                    current_suggestion = Like(title = search_name, artist = search_artist, album = search_album)
+                    sent_likes.append(current_suggestion)
+            template_vars = {'suggestions': sent_likes}
+            self.response.out.write(template.render(template_vars))
 
 class AboutUsHandler(webapp2.RequestHandler):
     def get(self):
