@@ -9,7 +9,7 @@ body{
       margin-right:100px;
       position:relative;
       background-size: cover;
-      background-image: url("http://images.forwallpaper.com/files/images/a/a83c/a83c0fc0/238438/swimming-pools-water-miscellaneous-photos-background-creative.jpg");
+      background-image: url("http://us.123rf.com/450wm/passengerz/passengerz1404/passengerz140400036/27515256-greeting-card-with-nice-color-house-sweet-home-on-monochrome-blue-pattern-background-with-houses-tre.jpg");
       left: -50px;
     }
 h1{
@@ -172,7 +172,7 @@ h1{
          left:70px;
          top: 10px;
        }
-#likedmusic{
+#likedmusic{ font-family: "Sigmar One";
               position: relative;
               left:-600px;
             }
