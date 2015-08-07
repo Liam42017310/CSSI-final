@@ -147,7 +147,7 @@ class ProfileHandler(webapp2.RequestHandler):
             })
         logging.info(sent_likes);
         template = jinja_environment.get_template('templates/profile.html')
-        template_vars = {'likes': sent_likes, 'events': passed_vars}
+        template_vars = {'likes': sent_likes, 'events': passed_vars, 'nickname': nickname}
         self.response.out.write(template.render(template_vars))
 
 class DefaultHandler(webapp2.RequestHandler):
